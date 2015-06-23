@@ -2,7 +2,7 @@
 
 namespace hcClient.ui
 {
-    class MultiStateImageWidget : AnimatedImageWidget
+    class MultiStateImageWidget : ImageWidget
     {
         public MultiStateImageWidget()
         {

@@ -7,6 +7,11 @@ namespace hcClient.ui
 {
     static class Style
     {
+        public static Size TopBarButtonsSize = new Size(60, 60);
+        public static int TopBarButtonSpacing = 6;
+
+        public static Size MainPanelSize = new Size(608, 528);
+
         public static Color Background = Color.FromArgb(0x1D, 0x21, 0x28);
         public static Color TextColor = Color.FromArgb(0xFF, 0xFF, 0xFF);
 

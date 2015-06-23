@@ -86,8 +86,8 @@ namespace hcClient.ui
                 Rectangle oldRectangle = _widgetRectangle;
                 _widgetRectangle.Offset(dx, dy);
 
-                foreach (WidgetBase widget in _widgets)
-                    widget.Offset(dx, dy);
+                foreach (var w in _widgets)
+                    w.Offset(dx, dy);
 
                 if (Visible && Parent != null)
                 {
@@ -214,16 +214,16 @@ namespace hcClient.ui
 
         public virtual void DataChanged(int id, int data)
         {
-            foreach (var widget in _widgets)
+            foreach (var w in _widgets)
             {
-                if (widget is IActiveWidget)
+                if (w is IActiveWidget)
                 {
-                    if (((IActiveWidget)widget).ID == id)
-                        ((IActiveWidget)widget).Data = data;
+                    if (((IActiveWidget)w).ID == id)
+                        ((IActiveWidget)w).Data = data;
                 }
-                else if (widget is IWidgetContainer)
+                else if (w is IWidgetContainer)
                 {
-                    ((IWidgetContainer)widget).DataChanged(id, data);
+                    ((IWidgetContainer)w).DataChanged(id, data);
                 }
             }
         }

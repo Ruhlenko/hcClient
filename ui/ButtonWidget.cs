@@ -35,6 +35,34 @@ namespace hcClient.ui
 
         #endregion
 
+        #region " Image "
+
+        private Image _image = null;
+        public Image Image
+        {
+            get { return _image; }
+            set
+            {
+                _image = value;
+                updateImageRect();
+            }
+        }
+
+        private Rectangle _imageRect = Rectangle.Empty;
+        private void updateImageRect()
+        {
+            if (_image == null)
+            {
+                _imageRect = Rectangle.Empty;
+                return;
+            }
+            _imageRect.Size = _image.Size;
+            _imageRect.X = Left + (Width - _imageRect.Width) / 2;
+            _imageRect.Y = Top + (Height - _imageRect.Height) / 2;
+        }
+
+        #endregion
+
         #region " Text "
 
         private string _text = null;
@@ -125,34 +153,6 @@ namespace hcClient.ui
 
         #endregion
 
-        #region " Image "
-
-        private Image _image = null;
-        public Image Image
-        {
-            get { return _image; }
-            set
-            {
-                _image = value;
-                updateImageRect();
-            }
-        }
-
-        private Rectangle _imageRect = Rectangle.Empty;
-        private void updateImageRect()
-        {
-            if (_image == null)
-            {
-                _imageRect = Rectangle.Empty;
-                return;
-            }
-            _imageRect.Size = _image.Size;
-            _imageRect.X = Left + (Width - _imageRect.Width) / 2;
-            _imageRect.Y = Top + (Height - _imageRect.Height) / 2;
-        }
-
-        #endregion
-
         #region " ForeColor "
 
         private Color _foreColor = Style.TextColor;
@@ -170,13 +170,46 @@ namespace hcClient.ui
 
         #region " BackColor "
 
-        private Color _backColor = Color.Transparent;
+        private Color _backColor = Style.Button;
         public Color BackColor
         {
             get { return _backColor; }
             set
             {
                 _backColor = value;
+                Invalidate();
+            }
+        }
+
+        #endregion
+
+        #region " Active "
+
+        private bool _active = false;
+        public bool Active
+        {
+            get { return _active; }
+            set
+            {
+                if (_active != value)
+                {
+                    _active = value;
+                    Invalidate();
+                }
+            }
+        }
+
+        #endregion
+
+        #region " ActiveColor "
+
+        private Color _activeColor = Style.ButtonActive;
+        public Color ActiveColor
+        {
+            get { return _activeColor; }
+            set
+            {
+                _activeColor = value;
                 Invalidate();
             }
         }
@@ -250,13 +283,12 @@ namespace hcClient.ui
         {
             if (_backColor != Color.Transparent)
             {
-                Color fillColor;
+                Color fillColor = (_active ? _activeColor : _backColor);
+
                 if (_disabled)
-                    fillColor = Style.Disabled(_backColor);
+                    fillColor = Style.Disabled(fillColor);
                 else if (_pressed)
-                    fillColor = Style.Pressed(_backColor);
-                else
-                    fillColor = _backColor;
+                    fillColor = Style.Pressed(fillColor);
 
                 e.Graphics.FillRectangle(new SolidBrush(fillColor), _widgetRectangle);
             }
