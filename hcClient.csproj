@@ -53,9 +53,10 @@
     <Compile Include="IniFile.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ui\ActiveImageWidget.cs" />
     <Compile Include="ui\IActiveWidget.cs" />
     <Compile Include="ui\ButtonWidget.cs" />
-    <Compile Include="ui\AnimatedImageWidget.cs" />
+    <Compile Include="ui\ImageWidget.cs" />
     <Compile Include="ui\IWidgetContainer.cs" />
     <Compile Include="ui\LevelWidget.cs" />
     <Compile Include="ui\MultiStateImageWidget.cs" />
@@ -90,7 +91,28 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Home_48.png" />
+    <None Include="Resources\security_48.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\home_48.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\door_24_1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\floor_1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\door_24_0.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\movement_24_0.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\movement_24_1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\floor_2.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
