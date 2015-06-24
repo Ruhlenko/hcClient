@@ -9,8 +9,12 @@ using System.Windows.Forms;
 
 namespace hcClient
 {
+    enum Mode { Light, Climate, Security, Settings };
+    enum Floor { Floor0, Floor1, Floor2 };
+
     partial class FormMain : Form, IWidgetContainer
     {
+
         public FormMain()
         {
             InitializeComponent();
@@ -19,30 +23,18 @@ namespace hcClient
 
             this.BackColor = Style.Background;
 
-            this.AddWidget(new ButtonWidget
-            {
-                Location = new Point(
-                    this.ClientSize.Width - Style.TopBarButtonsSize.Width - Style.TopBarButtonSpacing,
-                    Style.TopBarButtonSpacing),
-                Size = Style.TopBarButtonsSize,
-                Image = Properties.Resources.security_48,
-            });
-
-            this.AddWidget(new ButtonWidget
-            {
-                Location = new Point(
-                    this._widgets[this._widgets.Count - 1].X  - Style.TopBarButtonsSize.Width - Style.TopBarButtonSpacing,
-                    Style.TopBarButtonSpacing),
-                Size = Style.TopBarButtonsSize,
-                Image = Properties.Resources.home_48,
-            });
-
             Point _mainPanelLocation = new Point(
-                (this.ClientSize.Width - Style.MainPanelSize.Width) / 2,
-                Style.TopBarButtonsSize.Height + 2 * Style.TopBarButtonSpacing);
+                0,
+                Style.HeaderButtonsSize.Height + Style.HeaderPadding.Vertical);
+
+            initLight1(_mainPanelLocation);
+            initLight2(_mainPanelLocation);
 
             initSecurity1(_mainPanelLocation);
             initSecurity2(_mainPanelLocation);
+
+            initHeader();
+            initFloors();
 
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -192,21 +184,233 @@ namespace hcClient
 
         #endregion
 
-        #region " Security "
+        #region " Header "
 
-        WidgetContainer panelSecurity1;
-        WidgetContainer panelSecurity2;
+        Mode _mode = Mode.Light;
 
-        void initSecurity1(Point location)
+        ButtonWidget _btnLight;
+        ButtonWidget _btnClimate;
+        ButtonWidget _btnSecurity;
+        ButtonWidget _btnSettings;
+
+        void initHeader()
         {
-            panelSecurity1 = new WidgetContainer
+            int buttonStep = Style.HeaderButtonsSize.Width + Style.HeaderPadding.Right;
+
+            _btnSettings = new ButtonWidget
+            {
+                Location = new Point(
+                    this.ClientSize.Width - buttonStep,
+                    Style.HeaderPadding.Top),
+                Size = Style.HeaderButtonsSize,
+                Image = Properties.Resources.settings_48,
+                Disabled = true
+            };
+            _btnSettings.Click += _btnSettings_Click;
+            this.AddWidget(_btnSettings);
+
+            _btnSecurity = new ButtonWidget
+            {
+                Location = new Point(
+                    this._widgets[this._widgets.Count - 1].X - buttonStep,
+                    Style.HeaderPadding.Top),
+                Size = Style.HeaderButtonsSize,
+                Image = Properties.Resources.security_48,
+            };
+            _btnSecurity.Click += _btnSecurity_Click;
+            this.AddWidget(_btnSecurity);
+
+            _btnClimate = new ButtonWidget
+            {
+                Location = new Point(
+                    this._widgets[this._widgets.Count - 1].X - buttonStep,
+                    Style.HeaderPadding.Top),
+                Size = Style.HeaderButtonsSize,
+                Image = Properties.Resources.climate_48,
+                Disabled = true
+            };
+            _btnClimate.Click += _btnClimate_Click;
+            this.AddWidget(_btnClimate);
+
+            _btnLight = new ButtonWidget
+            {
+                Location = new Point(
+                    this._widgets[this._widgets.Count - 1].X - buttonStep,
+                    Style.HeaderPadding.Top),
+                Size = Style.HeaderButtonsSize,
+                Image = Properties.Resources.light_48,
+            };
+            _btnLight.Click += _btnLight_Click;
+            this.AddWidget(_btnLight);
+
+            updateHeader();
+        }
+
+        void _btnLight_Click(object sender, EventArgs e)
+        {
+            _mode = Mode.Light;
+            updateHeader();
+        }
+
+        void _btnClimate_Click(object sender, EventArgs e)
+        {
+            _mode = Mode.Climate;
+            updateHeader();
+        }
+
+        void _btnSecurity_Click(object sender, EventArgs e)
+        {
+            _mode = Mode.Security;
+            updateHeader();
+        }
+
+        void _btnSettings_Click(object sender, EventArgs e)
+        {
+            _mode = Mode.Settings;
+            updateHeader();
+        }
+
+        void updateHeader()
+        {
+            _btnLight.Active = (_mode == Mode.Light);
+            _btnClimate.Active = (_mode == Mode.Climate);
+            _btnSecurity.Active = (_mode == Mode.Security);
+            _btnSettings.Active = (_mode == Mode.Settings);
+
+            updateMainPanel();
+        }
+
+        #endregion
+
+        #region " Floor "
+
+        Floor _floor = Floor.Floor1;
+
+        ButtonWidget _btnFloor0;
+        ButtonWidget _btnFloor1;
+        ButtonWidget _btnFloor2;
+
+        void initFloors()
+        {
+            Point buttonsStartLocation = new Point(
+                this.ClientSize.Width - Style.FloorsButtonSize.Width - Style.FloorsPadding.Right,
+                Style.HeaderButtonsSize.Height + Style.HeaderPadding.Vertical);
+
+            _btnFloor2 = new ButtonWidget
+            {
+                Location = buttonsStartLocation,
+                Size = Style.FloorsButtonSize,
+                Font = Style.Font,
+                Text = "Второй этаж",
+            };
+            _btnFloor2.Click += _btnFloor2_Click;
+            this.AddWidget(_btnFloor2);
+
+            _btnFloor1 = new ButtonWidget
+            {
+                Location = new Point(
+                    buttonsStartLocation.X,
+                    this._widgets[this._widgets.Count - 1].Bottom + Style.FloorsPadding.Vertical),
+                Size = Style.FloorsButtonSize,
+                Font = Style.Font,
+                Text = "Первый этаж",
+            };
+            _btnFloor1.Click += _btnFloor1_Click;
+            this.AddWidget(_btnFloor1);
+
+            _btnFloor0 = new ButtonWidget
+            {
+                Location = new Point(
+                    buttonsStartLocation.X,
+                    this._widgets[this._widgets.Count - 1].Bottom + Style.FloorsPadding.Vertical),
+                Size = Style.FloorsButtonSize,
+                Font = Style.Font,
+                Text = "Подвал",
+                Disabled = true
+            };
+            _btnFloor0.Click += _btnFloor0_Click;
+            this.AddWidget(_btnFloor0);
+
+            updateFloorButtons();
+        }
+
+        void _btnFloor0_Click(object sender, EventArgs e)
+        {
+            _floor = Floor.Floor0;
+            updateFloorButtons();
+        }
+
+        void _btnFloor1_Click(object sender, EventArgs e)
+        {
+            _floor = Floor.Floor1;
+            updateFloorButtons();
+        }
+
+        void _btnFloor2_Click(object sender, EventArgs e)
+        {
+            _floor = Floor.Floor2;
+            updateFloorButtons();
+        }
+
+        void updateFloorButtons()
+        {
+            _btnFloor0.Active = (_floor == Floor.Floor0);
+            _btnFloor1.Active = (_floor == Floor.Floor1);
+            _btnFloor2.Active = (_floor == Floor.Floor2);
+
+            updateMainPanel();
+        }
+
+        #endregion
+
+        #region " Light "
+
+        WidgetContainer _panelLight1;
+        WidgetContainer _panelLight2;
+
+        void initLight1(Point location)
+        {
+            _panelLight1 = new WidgetContainer
             {
                 BackgroundImage = Properties.Resources.floor_1,
                 Size = Style.MainPanelSize,
                 Visible = false
             };
 
-            panelSecurity1.AddWidget(new ActiveImageWidget
+            _panelLight1.Move(location.X, location.Y);
+            this.AddWidget(_panelLight1);
+        }
+
+        void initLight2(Point location)
+        {
+            _panelLight2 = new WidgetContainer
+            {
+                BackgroundImage = Properties.Resources.floor_2,
+                Size = Style.MainPanelSize,
+                Visible = false
+            };
+
+            _panelLight2.Move(location.X, location.Y);
+            this.AddWidget(_panelLight2);
+        }
+
+        #endregion
+
+        #region " Security "
+
+        WidgetContainer _panelSecurity1;
+        WidgetContainer _panelSecurity2;
+
+        void initSecurity1(Point location)
+        {
+            _panelSecurity1 = new WidgetContainer
+            {
+                BackgroundImage = Properties.Resources.floor_1,
+                Size = Style.MainPanelSize,
+                Visible = false
+            };
+
+            _panelSecurity1.AddWidget(new ActiveImageWidget
             {
                 ID = 14,
                 Images = new Image[] {
@@ -216,7 +420,7 @@ namespace hcClient
                 BasePoint = new Point(188, 324),
             });
 
-            panelSecurity1.AddWidget(new ActiveImageWidget
+            _panelSecurity1.AddWidget(new ActiveImageWidget
             {
                 ID = 15,
                 Images = new Image[] {
@@ -226,7 +430,7 @@ namespace hcClient
                 BasePoint = new Point(218, 326),
             });
 
-            panelSecurity1.AddWidget(new ActiveImageWidget
+            _panelSecurity1.AddWidget(new ActiveImageWidget
             {
                 ID = 16,
                 Images = new Image[] {
@@ -236,7 +440,7 @@ namespace hcClient
                 BasePoint = new Point(223, 412),
             });
 
-            panelSecurity1.AddWidget(new ActiveImageWidget
+            _panelSecurity1.AddWidget(new ActiveImageWidget
             {
                 ID = 17,
                 Images = new Image[] {
@@ -246,7 +450,7 @@ namespace hcClient
                 BasePoint = new Point(254, 373),
             });
 
-            panelSecurity1.AddWidget(new ActiveImageWidget
+            _panelSecurity1.AddWidget(new ActiveImageWidget
             {
                 ID = 18,
                 Images = new Image[] {
@@ -256,7 +460,7 @@ namespace hcClient
                 BasePoint = new Point(254, 181),
             });
 
-            panelSecurity1.AddWidget(new ActiveImageWidget
+            _panelSecurity1.AddWidget(new ActiveImageWidget
             {
                 ID = 19,
                 Images = new Image[] {
@@ -266,7 +470,7 @@ namespace hcClient
                 BasePoint = new Point(453, 306),
             });
 
-            panelSecurity1.AddWidget(new ActiveImageWidget
+            _panelSecurity1.AddWidget(new ActiveImageWidget
             {
                 ID = 20,
                 Images = new Image[] {
@@ -276,7 +480,7 @@ namespace hcClient
                 BasePoint = new Point(409, 314),
             });
 
-            panelSecurity1.AddWidget(new ActiveImageWidget
+            _panelSecurity1.AddWidget(new ActiveImageWidget
             {
                 ID = 21,
                 Images = new Image[] {
@@ -286,7 +490,7 @@ namespace hcClient
                 BasePoint = new Point(429, 394),
             });
 
-            panelSecurity1.AddWidget(new ActiveImageWidget
+            _panelSecurity1.AddWidget(new ActiveImageWidget
             {
                 ID = 22,
                 Images = new Image[] {
@@ -296,7 +500,7 @@ namespace hcClient
                 BasePoint = new Point(379, 337),
             });
 
-            panelSecurity1.AddWidget(new ActiveImageWidget
+            _panelSecurity1.AddWidget(new ActiveImageWidget
             {
                 ID = 23,
                 Images = new Image[] {
@@ -306,7 +510,7 @@ namespace hcClient
                 BasePoint = new Point(429, 181),
             });
 
-            panelSecurity1.AddWidget(new ActiveImageWidget
+            _panelSecurity1.AddWidget(new ActiveImageWidget
             {
                 ID = 37,
                 Images = new Image[] {
@@ -316,7 +520,7 @@ namespace hcClient
                 BasePoint = new Point(150, 326),
             });
 
-            panelSecurity1.AddWidget(new ActiveImageWidget
+            _panelSecurity1.AddWidget(new ActiveImageWidget
             {
                 ID = 39,
                 Images = new Image[] {
@@ -326,20 +530,20 @@ namespace hcClient
                 BasePoint = new Point(503, 226),
             });
 
-            panelSecurity1.Move(location.X, location.Y);
-            this.AddWidget(panelSecurity1);
+            _panelSecurity1.Move(location.X, location.Y);
+            this.AddWidget(_panelSecurity1);
         }
 
         void initSecurity2(Point location)
         {
-            panelSecurity2 = new WidgetContainer
+            _panelSecurity2 = new WidgetContainer
             {
                 BackgroundImage = Properties.Resources.floor_2,
                 Size = Style.MainPanelSize,
                 Visible = true
             };
 
-            panelSecurity2.AddWidget(new ActiveImageWidget
+            _panelSecurity2.AddWidget(new ActiveImageWidget
             {
                 ID = 0,
                 Images = new Image[] {
@@ -349,7 +553,7 @@ namespace hcClient
                 BasePoint = new Point(305, 285),
             });
 
-            panelSecurity2.AddWidget(new ActiveImageWidget
+            _panelSecurity2.AddWidget(new ActiveImageWidget
             {
                 ID = 1,
                 Images = new Image[] {
@@ -359,7 +563,7 @@ namespace hcClient
                 BasePoint = new Point(223, 374),
             });
 
-            panelSecurity2.AddWidget(new ActiveImageWidget
+            _panelSecurity2.AddWidget(new ActiveImageWidget
             {
                 ID = 2,
                 Images = new Image[] {
@@ -369,7 +573,7 @@ namespace hcClient
                 BasePoint = new Point(249, 316),
             });
 
-            panelSecurity2.AddWidget(new ActiveImageWidget
+            _panelSecurity2.AddWidget(new ActiveImageWidget
             {
                 ID = 3,
                 Images = new Image[] {
@@ -379,7 +583,7 @@ namespace hcClient
                 BasePoint = new Point(181, 181),
             });
 
-            panelSecurity2.AddWidget(new ActiveImageWidget
+            _panelSecurity2.AddWidget(new ActiveImageWidget
             {
                 ID = 4,
                 Images = new Image[] {
@@ -389,7 +593,7 @@ namespace hcClient
                 BasePoint = new Point(249, 250),
             });
 
-            panelSecurity2.AddWidget(new ActiveImageWidget
+            _panelSecurity2.AddWidget(new ActiveImageWidget
             {
                 ID = 5,
                 Images = new Image[] {
@@ -399,7 +603,7 @@ namespace hcClient
                 BasePoint = new Point(305, 174),
             });
 
-            panelSecurity2.AddWidget(new ActiveImageWidget
+            _panelSecurity2.AddWidget(new ActiveImageWidget
             {
                 ID = 6,
                 Images = new Image[] {
@@ -409,7 +613,7 @@ namespace hcClient
                 BasePoint = new Point(336, 232),
             });
 
-            panelSecurity2.AddWidget(new ActiveImageWidget
+            _panelSecurity2.AddWidget(new ActiveImageWidget
             {
                 ID = 7,
                 Images = new Image[] {
@@ -419,7 +623,7 @@ namespace hcClient
                 BasePoint = new Point(429, 181),
             });
 
-            panelSecurity2.AddWidget(new ActiveImageWidget
+            _panelSecurity2.AddWidget(new ActiveImageWidget
             {
                 ID = 8,
                 Images = new Image[] {
@@ -429,7 +633,7 @@ namespace hcClient
                 BasePoint = new Point(360, 250),
             });
 
-            panelSecurity2.AddWidget(new ActiveImageWidget
+            _panelSecurity2.AddWidget(new ActiveImageWidget
             {
                 ID = 9,
                 Images = new Image[] {
@@ -439,7 +643,7 @@ namespace hcClient
                 BasePoint = new Point(452, 306),
             });
 
-            panelSecurity2.AddWidget(new ActiveImageWidget
+            _panelSecurity2.AddWidget(new ActiveImageWidget
             {
                 ID = 10,
                 Images = new Image[] {
@@ -449,7 +653,7 @@ namespace hcClient
                 BasePoint = new Point(445, 275),
             });
 
-            panelSecurity2.AddWidget(new ActiveImageWidget
+            _panelSecurity2.AddWidget(new ActiveImageWidget
             {
                 ID = 11,
                 Images = new Image[] {
@@ -459,7 +663,7 @@ namespace hcClient
                 BasePoint = new Point(447, 398),
             });
 
-            panelSecurity2.AddWidget(new ActiveImageWidget
+            _panelSecurity2.AddWidget(new ActiveImageWidget
             {
                 ID = 12,
                 Images = new Image[] {
@@ -469,7 +673,7 @@ namespace hcClient
                 BasePoint = new Point(383, 347),
             });
 
-            panelSecurity2.AddWidget(new ActiveImageWidget
+            _panelSecurity2.AddWidget(new ActiveImageWidget
             {
                 ID = 13,
                 Images = new Image[] {
@@ -479,10 +683,19 @@ namespace hcClient
                 BasePoint = new Point(360, 321),
             });
 
-            panelSecurity2.Move(location.X, location.Y);
-            this.AddWidget(panelSecurity2);
+            _panelSecurity2.Move(location.X, location.Y);
+            this.AddWidget(_panelSecurity2);
         }
 
         #endregion
+
+        void updateMainPanel()
+        {
+            _panelLight1.Visible = (_mode == Mode.Light && _floor == Floor.Floor1);
+            _panelLight2.Visible = (_mode == Mode.Light && _floor == Floor.Floor2);
+
+            _panelSecurity1.Visible = (_mode == Mode.Security && _floor == Floor.Floor1);
+            _panelSecurity2.Visible = (_mode == Mode.Security && _floor == Floor.Floor2);
+        }
     }
 }

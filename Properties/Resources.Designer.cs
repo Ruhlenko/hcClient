@@ -63,6 +63,16 @@ namespace hcClient.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap climate_48 {
+            get {
+                object obj = ResourceManager.GetObject("climate_48", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap door_24_0 {
             get {
                 object obj = ResourceManager.GetObject("door_24_0", resourceCulture);
@@ -113,6 +123,16 @@ namespace hcClient.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap light_48 {
+            get {
+                object obj = ResourceManager.GetObject("light_48", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap movement_24_0 {
             get {
                 object obj = ResourceManager.GetObject("movement_24_0", resourceCulture);
@@ -136,6 +156,16 @@ namespace hcClient.Properties {
         internal static System.Drawing.Bitmap security_48 {
             get {
                 object obj = ResourceManager.GetObject("security_48", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap settings_48 {
+            get {
+                object obj = ResourceManager.GetObject("settings_48", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

@@ -2,18 +2,24 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.Text;
+using System.Windows.Forms;
 
 namespace hcClient.ui
 {
     static class Style
     {
-        public static Size TopBarButtonsSize = new Size(60, 60);
-        public static int TopBarButtonSpacing = 6;
+        public static Size HeaderButtonsSize = new Size(60, 60);
+        public static Padding HeaderPadding = new Padding(6);
+
+        public static Size FloorsButtonSize = new Size(126, 33);
+        public static Padding FloorsPadding = new Padding(6, 0, 6, 3);
 
         public static Size MainPanelSize = new Size(608, 528);
 
         public static Color Background = Color.FromArgb(0x1D, 0x21, 0x28);
         public static Color TextColor = Color.FromArgb(0xFF, 0xFF, 0xFF);
+
+        public static Font Font = new Font("PT Sans", 12);
 
         public static Color Button = Color.FromArgb(0x25, 0x73, 0xDC); // Blue
         public static Color ButtonActive = Color.FromArgb(0xFF, 0x9C, 0x00); // Oranje

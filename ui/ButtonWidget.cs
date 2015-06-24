@@ -263,9 +263,12 @@ namespace hcClient.ui
 
         public override void OnMouseDown(MouseEventArgs e)
         {
-            _pressed = true;
-            Invalidate();
-            base.OnMouseDown(e);
+            if (!_disabled)
+            {
+                _pressed = true;
+                Invalidate();
+                base.OnMouseDown(e);
+            }
         }
 
         public override void OnMouseUp(MouseEventArgs e)
@@ -316,6 +319,5 @@ namespace hcClient.ui
         }
 
         #endregion
-
     }
 }
