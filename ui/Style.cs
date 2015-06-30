@@ -26,6 +26,8 @@ namespace hcClient.ui
         public static Color ButtonOff = Color.FromArgb(0x38, 0x3C, 0x44); // Grey
         public static Color ButtonOn = ButtonActive;
 
+        public static Color RegionPressed = Color.FromArgb(0x20, 0xFF, 0xFF, 0xFF);
+
         public static Color Disabled(Color src)
         {
             int grey = (int)(src.R * 0.2126 + src.G * 0.7152 + src.B * 0.0722);

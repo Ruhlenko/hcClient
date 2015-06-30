@@ -247,7 +247,8 @@ namespace hcClient.ui
 
         protected override void OnMoved(EventArgs e)
         {
-            Region = new Region(_widgetRectangle);
+            if (Region == null)
+                Region = new Region(_widgetRectangle);
             updateImageRect();
             base.OnMoved(e);
         }

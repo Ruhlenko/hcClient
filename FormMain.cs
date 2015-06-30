@@ -377,18 +377,129 @@ namespace hcClient
                 Visible = false
             };
 
+            _panelLight1.(new LampArrayWidget
+            {
+                ID = 83,
+                Location = new Point(164, 280),
+                Size = new Size(51, 89),
+                Images = new Image[] { 
+                    Properties.Resources.lamp_24_0,
+                    Properties.Resources.lamp_24_1
+                },
+                BasePoints = new Point[] { new Point(26, 45) },
+            });
+
+            _panelLight1.(new LampArrayWidget
+            {
+                ID = 84,
+                Location = new Point(163, 378),
+                Size = new Size(121, 69),
+                Images = new Image[] { 
+                    Properties.Resources.lamp_24_0,
+                    Properties.Resources.lamp_24_1
+                },
+                BasePoints = new Point[] { new Point(61, 35) },
+            });
+
             _panelLight1.Move(location.X, location.Y);
             this.AddWidget(_panelLight1);
         }
 
         void initLight2(Point location)
         {
+            WidgetBase w;
+
             _panelLight2 = new WidgetContainer
             {
                 BackgroundImage = Properties.Resources.floor_2,
                 Size = Style.MainPanelSize,
                 Visible = false
             };
+
+            _panelLight2.AddWidget(new ActiveImageWidget
+            {
+                ID = 40,
+                Images = new Image[] { 
+                    Properties.Resources.lamp_24_0,
+                    Properties.Resources.lamp_24_1
+                },
+                BasePoint = new Point(429, 181),
+            });
+
+            _panelLight2.AddWidget(new LampArrayWidget
+            {
+                ID = 45,
+                Location = new Point(411, 280),
+                Size = new Size(82, 53),
+                Images = new Image[] { 
+                    Properties.Resources.lamp_24_0,
+                    Properties.Resources.lamp_24_1
+                },
+                BasePoints = new Point[] { new Point(42, 28) },
+            });
+
+            _panelLight2.AddWidget(new ActiveImageWidget
+            {
+                ID = 46,
+                Images = new Image[] { 
+                    Properties.Resources.lamp_24_0,
+                    Properties.Resources.lamp_24_1
+                },
+                BasePoint = new Point(460, 398),
+            });
+
+            _panelLight2.AddWidget(new LampArrayWidget
+            {
+                ID = 50,
+                Location = new Point(298, 142),
+                Size = new Size(33, 33),
+                Images = new Image[] { 
+                    Properties.Resources.lamp_24_0,
+                    Properties.Resources.lamp_24_1
+                },
+                BasePoints = new Point[] { new Point(17, 17) },
+            });
+
+            _panelLight2.AddWidget(new LampArrayWidget
+            {
+                ID = 51,
+                Location = new Point(254, 61),
+                Size = new Size(102, 51),
+                Images = new Image[]
+                {
+                    Properties.Resources.lamp_8_0,
+                    Properties.Resources.lamp_8_1
+                },
+                BasePoints = new Point[] 
+                {
+                    new Point(14, 19),
+                    new Point(40, 13),
+                    new Point(66, 19),
+                    new Point(92, 38),
+                },
+            });
+
+            _panelLight2.AddWidget(new LampArrayWidget
+            {
+                ID = 56,
+                Location = new Point(310, 417),
+                Size = new Size(33, 33),
+                Images = new Image[] { 
+                    Properties.Resources.lamp_24_0,
+                    Properties.Resources.lamp_24_1
+                },
+                BasePoints = new Point[] { new Point(17, 17) },
+            });
+
+            _panelLight2.AddWidget(new ActiveImageWidget
+            {
+                ID = 58,
+                Images = new Image[] { 
+                    Properties.Resources.lamp_24_0,
+                    Properties.Resources.lamp_24_1
+                },
+                BasePoint = new Point(181, 175),
+            });
 
             _panelLight2.Move(location.X, location.Y);
             this.AddWidget(_panelLight2);

@@ -53,11 +53,17 @@
     <Compile Include="IniFile.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="ui\ActiveImageWidget.cs" />
     <Compile Include="ui\IActiveWidget.cs" />
     <Compile Include="ui\ButtonWidget.cs" />
     <Compile Include="ui\ImageWidget.cs" />
     <Compile Include="ui\IWidgetContainer.cs" />
+    <Compile Include="ui\LampArrayWidget.cs" />
     <Compile Include="ui\LevelWidget.cs" />
     <Compile Include="ui\MultiStateImageWidget.cs" />
     <Compile Include="ui\Style.cs" />
@@ -69,14 +75,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-      <DesignTime>True</DesignTime>
-    </Compile>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -122,6 +123,36 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\settings_48.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lamp_32_0.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lamp_32_1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lamp_16_0.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lamp_16_1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lamp_24_0.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lamp_24_1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lamp_36_0.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lamp_36_1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lamp_8_0.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lamp_8_1.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

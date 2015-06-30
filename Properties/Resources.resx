@@ -136,6 +136,36 @@
   <data name="home_48" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\home_48.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="lamp_16_0" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\lamp_16_0.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="lamp_16_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\lamp_16_1.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="lamp_24_0" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\lamp_24_0.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="lamp_24_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\lamp_24_1.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="lamp_32_0" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\lamp_32_0.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="lamp_32_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\lamp_32_1.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="lamp_36_0" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\lamp_36_0.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="lamp_36_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\lamp_36_1.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="lamp_8_0" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\lamp_8_0.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="lamp_8_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\lamp_8_1.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="light_48" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\light_48.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
