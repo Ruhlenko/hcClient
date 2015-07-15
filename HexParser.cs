@@ -2,7 +2,7 @@
 using System.Globalization;
 using System.Text;
 
-namespace hcGate
+namespace hcClient
 {
     static class HexParser
     {

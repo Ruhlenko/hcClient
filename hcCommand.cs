@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace hcGate
+namespace hcClient
 {
     class hcCommand : EventArgs
     {
