@@ -207,14 +207,25 @@ namespace hcClient.ui
             base.OnMouseUp(e);
         }
 
+        public override void OnClick(EventArgs e)
+        {
+            if (Parent != null)
+                Parent.ChangeData(ID, (Data > 0 ? 0 : 1));
+        }
+
         #endregion
 
         #region " Painting "
 
         public override void Paint(PaintEventArgs e)
         {
-            if (_pressed && Region != null)
-                e.Graphics.FillRegion(new SolidBrush(Style.RegionPressed), Region);
+            if (Region != null)
+            {
+                if (_pressed)
+                    e.Graphics.FillRegion(new SolidBrush(Style.RegionPressed), Region);
+                else
+                    e.Graphics.FillRegion(new SolidBrush(Style.Region), Region);
+            }
 
             if (_image == null || _imageRectangles == null || _imageRectangles.Length == 0)
                 return;

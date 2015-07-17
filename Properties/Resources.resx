@@ -127,6 +127,9 @@
   <data name="door_24_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\door_24_1.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="floor_0" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\floor_0.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="floor_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\floor_1.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -148,23 +151,53 @@
   <data name="lamp_24_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\lamp_24_1.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="lamp_32_0" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\lamp_32_0.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="lamp_32_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\lamp_32_1.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="lamp_36_0" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\lamp_36_0.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="lamp_36_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\lamp_36_1.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="lamp_8_0" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\lamp_8_0.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="lamp_8_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\lamp_8_1.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="lamp_e_16_0" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\lamp_e_16_0.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="lamp_e_16_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\lamp_e_16_1.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="lamp_s_16_0" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\lamp_s_16_0.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="lamp_s_16_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\lamp_s_16_1.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="lamp_w_16_0" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\lamp_w_16_0.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="lamp_w_16_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\lamp_w_16_1.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="led_01_0" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\led_01_0.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="led_01_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\led_01_1.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="led_11_0" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\led_11_0.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="led_11_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\led_11_1.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="led_21_0" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\led_21_0.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="led_21_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\led_21_1.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="led_22_0" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\led_22_0.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="led_22_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\led_22_1.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="light_48" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\light_48.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>

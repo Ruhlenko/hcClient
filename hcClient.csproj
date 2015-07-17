@@ -41,12 +41,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Defaults.cs" />
     <Compile Include="FormMain.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FormMain.Designer.cs">
       <DependentUpon>FormMain.cs</DependentUpon>
     </Compile>
+    <Compile Include="hcCache.cs" />
     <Compile Include="hcCommand.cs" />
     <Compile Include="hcData.cs" />
     <Compile Include="HexParser.cs" />
@@ -58,6 +60,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="TcpClient.cs" />
     <Compile Include="ui\ActiveImageWidget.cs" />
     <Compile Include="ui\IActiveWidget.cs" />
     <Compile Include="ui\ButtonWidget.cs" />
@@ -78,6 +81,9 @@
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="hcClient.ini">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -125,10 +131,13 @@
     <None Include="Resources\settings_48.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\lamp_32_0.png" />
+    <None Include="Resources\lamp_24_1.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\lamp_32_1.png" />
+    <None Include="Resources\lamp_8_0.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lamp_8_1.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\lamp_16_0.png" />
@@ -137,22 +146,52 @@
     <None Include="Resources\lamp_16_1.png" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\lamp_s_16_0.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lamp_s_16_1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lamp_w_16_0.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lamp_w_16_1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lamp_e_16_0.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lamp_e_16_1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\floor_0.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\led_01_0.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\led_01_1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\led_21_0.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\led_21_1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\led_22_0.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\led_22_1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\led_11_0.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\led_11_1.png" />
+  </ItemGroup>
+  <ItemGroup>
     <None Include="Resources\lamp_24_0.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\lamp_24_1.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\lamp_36_0.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\lamp_36_1.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\lamp_8_0.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\lamp_8_1.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
