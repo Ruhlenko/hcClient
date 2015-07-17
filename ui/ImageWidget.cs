@@ -22,6 +22,12 @@ namespace hcClient.ui
             }
         }
 
+        public override void Offset(int dx, int dy)
+        {
+            base.Offset(dx, dy);
+            _basePoint.Offset(dx, dy);
+        }
+
         #endregion
 
         #region " ImageAlign "
