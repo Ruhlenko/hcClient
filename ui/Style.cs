@@ -12,7 +12,7 @@ namespace hcClient.ui
         public static Padding HeaderPadding = new Padding(6);
 
         public static Size FloorsButtonSize = new Size(126, 33);
-        public static Padding FloorsPadding = new Padding(6, 0, 6, 3);
+        public static Padding FloorsPadding = new Padding(6, 0, 6, 6);
 
         public static Size MainPanelSize = new Size(608, 528);
 
