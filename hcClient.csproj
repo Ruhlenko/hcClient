@@ -104,19 +104,7 @@
     <None Include="Resources\home_48.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\door_24_1.png" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\floor_1.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\door_24_0.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\movement_24_0.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\movement_24_1.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\floor_2.png" />
@@ -192,6 +180,18 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\lamp_24_0.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\door_24_0.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\door_24_1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\movement_24_0.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\movement_24_1.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
