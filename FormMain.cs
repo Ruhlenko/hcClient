@@ -48,6 +48,19 @@ namespace hcClient
 
             InitializeComponent();
 
+            if (Screen.PrimaryScreen.Bounds.Width == 800 &&
+                Screen.PrimaryScreen.Bounds.Height == 600)
+            {
+                this.ClientSize = new Size(800, 600);
+                this.FormBorderStyle = FormBorderStyle.None;
+                this.WindowState = FormWindowState.Maximized;
+            }
+            else
+            {
+                this.FormBorderStyle = FormBorderStyle.FixedSingle;
+                this.WindowState = FormWindowState.Normal;
+            }
+
             #region " TcpClient "
 
             tcpClient = new TcpClient();
