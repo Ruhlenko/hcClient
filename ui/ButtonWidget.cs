@@ -320,5 +320,15 @@ namespace hcClient.ui
         }
 
         #endregion
+
+        #region " IDisposable "
+
+        public override void Dispose()
+        {
+            _textFormat.Dispose();
+            base.Dispose();
+        }
+
+        #endregion
     }
 }

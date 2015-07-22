@@ -4,7 +4,7 @@ using System.Windows.Forms;
 
 namespace hcClient.ui
 {
-    abstract class WidgetBase
+    abstract class WidgetBase : IDisposable
     {
         #region " Properties "
 
@@ -250,6 +250,12 @@ namespace hcClient.ui
         }
 
         #endregion
+
+        #endregion
+
+        #region " IDisposable "
+
+        public virtual void Dispose() {}
 
         #endregion
     }

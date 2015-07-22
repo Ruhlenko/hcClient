@@ -8,7 +8,7 @@ namespace hcClient
 {
     public enum ConnectionStatus { Disconnected, Connecting, OK }
 
-    class TcpClient
+    class TcpClient : IDisposable
     {
         #region " Constructor "
 
@@ -352,7 +352,16 @@ namespace hcClient
 
         #endregion
 
+        #region " IDisposable "
 
+        public void Dispose()
+        {
+            _socket.Close();
+            _reconnectTimer.Dispose();
+            _watchdogTimer.Dispose();
+        }
+
+        #endregion
     }
 
 }
