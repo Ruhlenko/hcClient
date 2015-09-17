@@ -81,6 +81,10 @@ namespace hcClient
             initLight1(_mainPanelLocation);
             initLight2(_mainPanelLocation);
 
+            initClimate0(_mainPanelLocation);
+            initClimate1(_mainPanelLocation);
+            initClimate2(_mainPanelLocation);
+
             initSecurity0(_mainPanelLocation);
             initSecurity1(_mainPanelLocation);
             initSecurity2(_mainPanelLocation);
@@ -300,8 +304,7 @@ namespace hcClient
                     this._widgets[this._widgets.Count - 1].X - buttonStep,
                     Style.HeaderPadding.Top),
                 Size = Style.HeaderButtonsSize,
-                Image = Properties.Resources.climate_48,
-                Disabled = true
+                Image = Properties.Resources.climate_48
             };
             _btnClimate.Click += _btnClimate_Click;
             this.AddWidget(_btnClimate);
@@ -1527,6 +1530,53 @@ namespace hcClient
 
         #endregion
 
+        #region " Climate "
+
+        WidgetContainer _panelClimate0;
+        WidgetContainer _panelClimate1;
+        WidgetContainer _panelClimate2;
+
+        void initClimate0(Point location)
+        {
+            _panelClimate0 = new WidgetContainer
+            {
+                BackgroundImage = Properties.Resources.floor_0,
+                Size = Style.MainPanelSize,
+                Visible = false
+            };
+
+            _panelClimate0.Move(location.X, location.Y);
+            this.AddWidget(_panelClimate0);
+        }
+
+        void initClimate1(Point location)
+        {
+            _panelClimate1 = new WidgetContainer
+            {
+                BackgroundImage = Properties.Resources.floor_1,
+                Size = Style.MainPanelSize,
+                Visible = false
+            };
+
+            _panelClimate1.Move(location.X, location.Y);
+            this.AddWidget(_panelClimate1);
+        }
+
+        void initClimate2(Point location)
+        {
+            _panelClimate2 = new WidgetContainer
+            {
+                BackgroundImage = Properties.Resources.floor_2,
+                Size = Style.MainPanelSize,
+                Visible = true
+            };
+
+            _panelClimate2.Move(location.X, location.Y);
+            this.AddWidget(_panelClimate2);
+        }
+
+        #endregion
+
         #region " Security "
 
         WidgetContainer _panelSecurity0;
@@ -1959,6 +2009,10 @@ namespace hcClient
             _panelLight0.Visible = (_mode == Mode.Light && _floor == Floor.Floor0);
             _panelLight1.Visible = (_mode == Mode.Light && _floor == Floor.Floor1);
             _panelLight2.Visible = (_mode == Mode.Light && _floor == Floor.Floor2);
+
+            _panelClimate0.Visible = (_mode == Mode.Climate && _floor == Floor.Floor0);
+            _panelClimate1.Visible = (_mode == Mode.Climate && _floor == Floor.Floor1);
+            _panelClimate2.Visible = (_mode == Mode.Climate && _floor == Floor.Floor2);
 
             _panelSecurity0.Visible = (_mode == Mode.Security && _floor == Floor.Floor0);
             _panelSecurity1.Visible = (_mode == Mode.Security && _floor == Floor.Floor1);
