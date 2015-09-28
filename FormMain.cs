@@ -54,11 +54,13 @@ namespace hcClient
                 this.ClientSize = new Size(800, 600);
                 this.FormBorderStyle = FormBorderStyle.None;
                 this.WindowState = FormWindowState.Maximized;
+                Cursor.Hide();
             }
             else
             {
                 this.FormBorderStyle = FormBorderStyle.FixedSingle;
                 this.WindowState = FormWindowState.Normal;
+                Cursor.Show();
             }
 
             #region " TcpClient "
