@@ -6,29 +6,28 @@ using System.Windows.Forms;
 
 namespace hcClient.ui
 {
-    class WidgetContainer : WidgetBase, IWidgetContainer
+    class WidgetContainer : Widget, IWidgetContainer
     {
         #region " Widgets "
 
-        private List<WidgetBase> _widgets = new List<WidgetBase>();
-        protected WidgetBase _hoveredWidget = null;
-        protected WidgetBase _mouseDownWidget = null;
+        protected List<Widget> _widgets = new List<Widget>();
+        protected Widget _mouseDownWidget = null;
 
-        public virtual void AddWidget(WidgetBase widget)
+        public virtual void AddWidget(Widget widget)
         {
             _widgets.Add(widget);
             widget.Parent = this;
             Invalidate(widget.WidgetRectangle);
         }
 
-        public void RemoveWidget(WidgetBase widget)
+        public void RemoveWidget(Widget widget)
         {
             _widgets.Remove(widget);
             widget.Parent = null;
             Invalidate(widget.WidgetRectangle);
         }
 
-        public void PopupWidget(WidgetBase widget, WidgetPosition position)
+        public void PopupWidget(Widget widget, WidgetPosition position)
         {
             if (Parent != null)
                 Parent.PopupWidget(widget, position);
@@ -151,60 +150,31 @@ namespace hcClient.ui
             base.OnMouseMove(e);
 
             if (_mouseDownWidget != null)
-            {
                 _mouseDownWidget.OnMouseMove(e);
-            }
-            else
-            {
-                WidgetBase newHoveredWidget = null;
-
-                foreach (var w in _widgets)
-                {
-                    if (w.Visible && w.Region != null)
-                    {
-                        if (w.Region.IsVisible(e.Location))
-                            newHoveredWidget = w;
-                    }
-                }
-
-                if (_hoveredWidget != newHoveredWidget)
-                {
-                    if (_hoveredWidget != null) _hoveredWidget.Hovered = false;
-                    if (newHoveredWidget != null) newHoveredWidget.Hovered = true;
-                    _hoveredWidget = newHoveredWidget;
-                }
-
-                if (_hoveredWidget != null) _hoveredWidget.OnMouseMove(e);
-            }
-        }
-
-        public override void OnMouseLeave(EventArgs e)
-        {
-            if (_hoveredWidget != null)
-            {
-                _hoveredWidget.Hovered = false;
-                _hoveredWidget = null;
-            }
-            base.OnMouseLeave(e);
         }
 
         public override void OnMouseDown(MouseEventArgs e)
         {
             base.OnMouseDown(e);
-            if (_hoveredWidget != null)
+
+            foreach (var w in _widgets)
             {
-                _mouseDownWidget = _hoveredWidget;
-                _hoveredWidget.OnMouseDown(e);
+                if (w.Visible && w.Region != null && w.Region.IsVisible(e.Location))
+                    _mouseDownWidget = w;
             }
+
+            if (_mouseDownWidget != null)
+                _mouseDownWidget.OnMouseDown(e);
         }
 
         public override void OnMouseUp(MouseEventArgs e)
         {
             base.OnMouseUp(e);
-            if (_hoveredWidget != null)
+
+            if (_mouseDownWidget != null)
             {
+                _mouseDownWidget.OnMouseUp(e);
                 _mouseDownWidget = null;
-                _hoveredWidget.OnMouseUp(e);
             }
         }
 

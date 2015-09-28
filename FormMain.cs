@@ -77,7 +77,7 @@ namespace hcClient
 
             Point _mainPanelLocation = new Point(
                 0,
-                Style.HeaderButtonsSize.Height + Style.HeaderPadding.Vertical);
+                Style.HeaderButtonsSize.Height + Style.HeaderPadding * 2);
 
             initLight0(_mainPanelLocation);
             initLight1(_mainPanelLocation);
@@ -112,13 +112,12 @@ namespace hcClient
 
         #region " IWidgetContainer "
 
-        private List<WidgetBase> _widgets = new List<WidgetBase>();
-        private WidgetBase _hoveredWidget = null;
-        private WidgetBase _mouseDownWidget = null;
-        private WidgetBase _popupWidget = null;
+        private List<Widget> _widgets = new List<Widget>();
+        private Widget _mouseDownWidget = null;
+        private Widget _popupWidget = null;
         private bool _popupWidgetMustClosed = false;
 
-        public void AddWidget(WidgetBase widget)
+        public void AddWidget(Widget widget)
         {
             if (widget == null) return;
 
@@ -127,7 +126,7 @@ namespace hcClient
             Invalidate(widget.WidgetRectangle);
         }
 
-        public void RemoveWidget(WidgetBase widget)
+        public void RemoveWidget(Widget widget)
         {
             if (widget == null) return;
 
@@ -137,14 +136,56 @@ namespace hcClient
             Invalidate(widget.WidgetRectangle);
         }
 
-        public void PopupWidget(WidgetBase widget, WidgetPosition position)
+        public void PopupWidget(Widget widget, WidgetPosition position)
         {
-            throw new NotImplementedException();
+            int x, y;
+            Point mouse;
+            switch (position)
+            {
+            case WidgetPosition.CursorRight:
+                mouse = this.PointToClient(Cursor.Position);
+                x = mouse.X;
+                y = mouse.Y - widget.Height / 2;
+                break;
+            case WidgetPosition.CursorTop:
+                mouse = this.PointToClient(Cursor.Position);
+                x = mouse.X - widget.Width / 2;
+                y = mouse.Y - widget.Height;
+                break;
+            default:
+                x = (this.ClientSize.Width - widget.Width) / 2;
+                y = (this.ClientSize.Height - widget.Height) / 2;
+                break;
+            }
+            PopupWidget(widget, x, y);
+        }
+
+        public void PopupWidget(Widget widget, int x, int y)
+        {
+            if (widget == null) return;
+
+            closePopupWidget();
+
+            AddWidget(widget);
+            _popupWidget = widget;
+            widget.Move(x, y);
+            widget.Visible = true;
         }
 
         public void ClosePopup()
         {
-            throw new NotImplementedException();
+            if (_popupWidget != null)
+                _popupWidgetMustClosed = true;
+        }
+
+        private void closePopupWidget()
+        {
+            if (_popupWidget != null)
+            {
+                RemoveWidget(_popupWidget);
+                _popupWidget = null;
+            }
+            _popupWidgetMustClosed = false;
         }
 
         #endregion
@@ -189,62 +230,41 @@ namespace hcClient
                 _popupWidget.OnMouseMove(e);
 
             if (_mouseDownWidget != null)
-            {
                 _mouseDownWidget.OnMouseMove(e);
-            }
-            else
-            {
-                WidgetBase newHoveredWidget = null;
-
-                foreach (var w in _widgets)
-                {
-                    if (w.Visible && w.Region != null)
-                    {
-                        if (w.Region.IsVisible(e.Location))
-                            newHoveredWidget = w;
-                    }
-                }
-
-                if (_hoveredWidget != newHoveredWidget)
-                {
-                    if (_hoveredWidget != null) _hoveredWidget.Hovered = false;
-                    if (newHoveredWidget != null) newHoveredWidget.Hovered = true;
-                    _hoveredWidget = newHoveredWidget;
-                }
-
-                if (_hoveredWidget != null) _hoveredWidget.OnMouseMove(e);
-
-                //if (_popupWidgetMustClosed) closePopupWidget();
-            }
         }
 
         protected override void OnMouseDown(MouseEventArgs e)
         {
             base.OnMouseDown(e);
 
-            //if (_popupWidget != null && !_popupWidget.Region.IsVisible(e.Location))
-            //    closePopupWidget();
+            if (_popupWidget != null && !_popupWidget.Region.IsVisible(e.Location))
+                closePopupWidget();
 
-            if (_hoveredWidget != null)
+            foreach (var w in _widgets)
             {
-                _mouseDownWidget = _hoveredWidget;
-                _hoveredWidget.OnMouseDown(e);
+                if (w.Visible && w.Region != null && w.Region.IsVisible(e.Location))
+                    _mouseDownWidget = w;
             }
 
-            //if (_popupWidgetMustClosed) closePopupWidget();
+            if (_mouseDownWidget != null)
+                _mouseDownWidget.OnMouseDown(e);
+
+            if (_popupWidgetMustClosed)
+                closePopupWidget();
         }
 
         protected override void OnMouseUp(MouseEventArgs e)
         {
             base.OnMouseUp(e);
 
-            if (_hoveredWidget != null)
+            if (_mouseDownWidget != null)
             {
+                _mouseDownWidget.OnMouseUp(e);
                 _mouseDownWidget = null;
-                _hoveredWidget.OnMouseUp(e);
             }
 
-            //if (_popupWidgetMustClosed) closePopupWidget();
+            if (_popupWidgetMustClosed)
+                closePopupWidget();
         }
 
         #endregion
@@ -275,13 +295,13 @@ namespace hcClient
 
         void initHeader()
         {
-            int buttonStep = Style.HeaderButtonsSize.Width + Style.HeaderPadding.Right;
+            int buttonStep = Style.HeaderButtonsSize.Width + Style.HeaderPadding;
 
             _btnSettings = new ButtonWidget
             {
                 Location = new Point(
                     this.ClientSize.Width - buttonStep,
-                    Style.HeaderPadding.Top),
+                    Style.HeaderPadding),
                 Size = Style.HeaderButtonsSize,
                 Image = Properties.Resources.settings_48,
                 Disabled = true
@@ -293,7 +313,7 @@ namespace hcClient
             {
                 Location = new Point(
                     this._widgets[this._widgets.Count - 1].X - buttonStep,
-                    Style.HeaderPadding.Top),
+                    Style.HeaderPadding),
                 Size = Style.HeaderButtonsSize,
                 Image = Properties.Resources.security_48,
             };
@@ -304,7 +324,7 @@ namespace hcClient
             {
                 Location = new Point(
                     this._widgets[this._widgets.Count - 1].X - buttonStep,
-                    Style.HeaderPadding.Top),
+                    Style.HeaderPadding),
                 Size = Style.HeaderButtonsSize,
                 Image = Properties.Resources.climate_48
             };
@@ -315,7 +335,7 @@ namespace hcClient
             {
                 Location = new Point(
                     this._widgets[this._widgets.Count - 1].X - buttonStep,
-                    Style.HeaderPadding.Top),
+                    Style.HeaderPadding),
                 Size = Style.HeaderButtonsSize,
                 Image = Properties.Resources.light_48,
             };
@@ -372,15 +392,14 @@ namespace hcClient
         void initFloors()
         {
             Point buttonsStartLocation = new Point(
-                this.ClientSize.Width - Style.FloorsButtonSize.Width - Style.FloorsPadding.Right,
-                Style.HeaderButtonsSize.Height + Style.HeaderPadding.Vertical);
+                this.ClientSize.Width - Style.HeaderButtonsSize.Width - Style.HeaderPadding,
+                Style.HeaderButtonsSize.Height + Style.HeaderPadding * 2);
 
             _btnFloor2 = new ButtonWidget
             {
                 Location = buttonsStartLocation,
-                Size = Style.FloorsButtonSize,
-                Font = Style.Font,
-                Text = "Второй этаж",
+                Size = Style.HeaderButtonsSize,
+                Image = Properties.Resources.floor_48_2,
             };
             _btnFloor2.Click += _btnFloor2_Click;
             this.AddWidget(_btnFloor2);
@@ -389,10 +408,9 @@ namespace hcClient
             {
                 Location = new Point(
                     buttonsStartLocation.X,
-                    this._widgets[this._widgets.Count - 1].Bottom + Style.FloorsPadding.Vertical),
-                Size = Style.FloorsButtonSize,
-                Font = Style.Font,
-                Text = "Первый этаж",
+                    this._widgets[this._widgets.Count - 1].Bottom + Style.HeaderPadding),
+                Size = Style.HeaderButtonsSize,
+                Image = Properties.Resources.floor_48_1,
             };
             _btnFloor1.Click += _btnFloor1_Click;
             this.AddWidget(_btnFloor1);
@@ -401,10 +419,9 @@ namespace hcClient
             {
                 Location = new Point(
                     buttonsStartLocation.X,
-                    this._widgets[this._widgets.Count - 1].Bottom + Style.FloorsPadding.Vertical),
-                Size = Style.FloorsButtonSize,
-                Font = Style.Font,
-                Text = "Подвал",
+                    this._widgets[this._widgets.Count - 1].Bottom + Style.HeaderPadding),
+                Size = Style.HeaderButtonsSize,
+                Image = Properties.Resources.floor_48_0,
             };
             _btnFloor0.Click += _btnFloor0_Click;
             this.AddWidget(_btnFloor0);
@@ -1076,9 +1093,60 @@ namespace hcClient
 
             _panelLight1.AddWidget(new LampArrayWidget
             {
+                ID = 99,
+                Location = new Point(496, 202),
+                Size = new Size(48, 48),
+                Images = new Image[] { 
+                    Properties.Resources.lamp_16_0,
+                    Properties.Resources.lamp_16_1
+                },
+                BasePoints = new Point[] { new Point(24, 24) },
+            });
+
+            _panelLight1.AddWidget(new LampArrayWidget
+            {
+                ID = 100,
+                Location = new Point(112, 302),
+                Size = new Size(48, 48),
+                Images = new Image[] { 
+                    Properties.Resources.lamp_16_0,
+                    Properties.Resources.lamp_16_1
+                },
+                BasePoints = new Point[] { new Point(24, 24) },
+            });
+
+            _panelLight1.AddWidget(new LampArrayWidget
+            {
                 ID = 118,
                 Location = new Point(286, 371),
                 Size = new Size(36, 95),
+            });
+
+            _panelLight1.AddWidget(new ActiveButtonWidget
+            {
+                ID = 131,
+                Text = "Реле 1",
+                Font = Style.NormalFont,
+                Location = new Point(Style.ControlPadding, 0),
+                Size = Style.ControlButtonSize,
+            });
+
+            _panelLight1.AddWidget(new ActiveButtonWidget
+            {
+                ID = 132,
+                Text = "Реле 2",
+                Font = Style.NormalFont,
+                Location = new Point(Style.ControlPadding, Style.ControlButtonSize.Height + Style.ControlPadding),
+                Size = Style.ControlButtonSize,
+            });
+
+            _panelLight1.AddWidget(new ActiveButtonWidget
+            {
+                ID = 133,
+                Text = "Реле 3",
+                Font = Style.NormalFont,
+                Location = new Point(Style.ControlPadding, (Style.ControlButtonSize.Height + Style.ControlPadding) * 2),
+                Size = Style.ControlButtonSize,
             });
 
             _panelLight1.Move(location.X, location.Y);
@@ -1540,6 +1608,8 @@ namespace hcClient
 
         void initClimate0(Point location)
         {
+            Widget w;
+
             _panelClimate0 = new WidgetContainer
             {
                 BackgroundImage = Properties.Resources.floor_0,
@@ -1547,12 +1617,23 @@ namespace hcClient
                 Visible = false
             };
 
+            w = new AcWidget
+            {
+                IdMode = 154,
+                IdFan = 155,
+                IdTempr = 156
+            };
+            _panelClimate0.AddWidget(w);
+            w.Move(429 - 56, 347 - 32);
+
             _panelClimate0.Move(location.X, location.Y);
             this.AddWidget(_panelClimate0);
         }
 
         void initClimate1(Point location)
         {
+            Widget w;
+
             _panelClimate1 = new WidgetContainer
             {
                 BackgroundImage = Properties.Resources.floor_1,
@@ -1560,18 +1641,74 @@ namespace hcClient
                 Visible = false
             };
 
+            w = new AcWidget
+            {
+                IdMode = 148,
+                IdFan = 149,
+                IdTempr = 150
+            };
+            _panelClimate1.AddWidget(w);
+            w.Move(300 - 56, 150 - 32);
+
+            w = new AcWidget
+            {
+                IdMode = 151,
+                IdFan = 152,
+                IdTempr = 153
+            };
+            _panelClimate1.AddWidget(w);
+            w.Move(429 - 56, 394 - 32);
+
             _panelClimate1.Move(location.X, location.Y);
             this.AddWidget(_panelClimate1);
         }
 
         void initClimate2(Point location)
         {
+            Widget w;
+
             _panelClimate2 = new WidgetContainer
             {
                 BackgroundImage = Properties.Resources.floor_2,
                 Size = Style.MainPanelSize,
                 Visible = true
             };
+
+            w = new AcWidget
+            {
+                IdMode = 136,
+                IdFan = 137,
+                IdTempr = 138
+            };
+            _panelClimate2.AddWidget(w);
+            w.Move(429 - 56, 181 - 32);
+
+            w = new AcWidget
+            {
+                IdMode = 139,
+                IdFan = 140,
+                IdTempr = 141
+            };
+            _panelClimate2.AddWidget(w);
+            w.Move(304 - 56, 86 - 32);
+
+            w = new AcWidget
+            {
+                IdMode = 142,
+                IdFan = 143,
+                IdTempr = 144
+            };
+            _panelClimate2.AddWidget(w);
+            w.Move(181 - 56, 181 - 32);
+
+            w = new AcWidget
+            {
+                IdMode = 145,
+                IdFan = 146,
+                IdTempr = 147
+            };
+            _panelClimate2.AddWidget(w);
+            w.Move(223 - 56, 394 - 32);
 
             _panelClimate2.Move(location.X, location.Y);
             this.AddWidget(_panelClimate2);
@@ -1734,7 +1871,7 @@ namespace hcClient
                     Properties.Resources.movement_24_0,
                     Properties.Resources.movement_24_1
                 },
-                BasePoint = new Point(188, 324),
+                BasePoint = new Point(188, 324)
             });
 
             _panelSecurity1.AddWidget(new ActiveImageWidget
@@ -1744,7 +1881,7 @@ namespace hcClient
                     Properties.Resources.door_24_0,
                     Properties.Resources.door_24_1
                 },
-                BasePoint = new Point(218, 326),
+                BasePoint = new Point(218, 326)
             });
 
             _panelSecurity1.AddWidget(new ActiveImageWidget
@@ -1754,7 +1891,7 @@ namespace hcClient
                     Properties.Resources.movement_24_0,
                     Properties.Resources.movement_24_1
                 },
-                BasePoint = new Point(223, 412),
+                BasePoint = new Point(223, 412)
             });
 
             _panelSecurity1.AddWidget(new ActiveImageWidget
@@ -1764,7 +1901,7 @@ namespace hcClient
                     Properties.Resources.door_24_0,
                     Properties.Resources.door_24_1
                 },
-                BasePoint = new Point(254, 373),
+                BasePoint = new Point(254, 373)
             });
 
             _panelSecurity1.AddWidget(new ActiveImageWidget
@@ -1774,7 +1911,7 @@ namespace hcClient
                     Properties.Resources.movement_24_0,
                     Properties.Resources.movement_24_1
                 },
-                BasePoint = new Point(254, 181),
+                BasePoint = new Point(254, 181)
             });
 
             _panelSecurity1.AddWidget(new ActiveImageWidget
@@ -1784,7 +1921,7 @@ namespace hcClient
                     Properties.Resources.movement_24_0,
                     Properties.Resources.movement_24_1
                 },
-                BasePoint = new Point(453, 306),
+                BasePoint = new Point(453, 306)
             });
 
             _panelSecurity1.AddWidget(new ActiveImageWidget
@@ -1794,7 +1931,7 @@ namespace hcClient
                     Properties.Resources.door_24_0,
                     Properties.Resources.door_24_1
                 },
-                BasePoint = new Point(409, 314),
+                BasePoint = new Point(409, 314)
             });
 
             _panelSecurity1.AddWidget(new ActiveImageWidget
@@ -1804,7 +1941,7 @@ namespace hcClient
                     Properties.Resources.movement_24_0,
                     Properties.Resources.movement_24_1
                 },
-                BasePoint = new Point(429, 394),
+                BasePoint = new Point(429, 394)
             });
 
             _panelSecurity1.AddWidget(new ActiveImageWidget
@@ -1814,7 +1951,7 @@ namespace hcClient
                     Properties.Resources.door_24_0,
                     Properties.Resources.door_24_1
                 },
-                BasePoint = new Point(379, 337),
+                BasePoint = new Point(379, 337)
             });
 
             _panelSecurity1.AddWidget(new ActiveImageWidget

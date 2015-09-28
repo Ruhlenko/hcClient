@@ -6,7 +6,7 @@ namespace hcClient.ui
 {
     enum TextStyle { Normal, OutlineWhite, OutlineBlack };
 
-    class TextWidget : WidgetBase
+    class TextWidget : Widget
     {
         #region " Constructor "
 
@@ -235,14 +235,14 @@ namespace hcClient.ui
 
         #endregion
 
-        #region " IDisposable "
+        //#region " IDisposable "
 
-        public override void Dispose()
-        {
-            _textFormat.Dispose();
-            base.Dispose();
-        }
+        //public override void Dispose()
+        //{
+        //    _textFormat.Dispose();
+        //    base.Dispose();
+        //}
 
-        #endregion
+        //#endregion
     }
 }

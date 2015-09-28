@@ -4,7 +4,7 @@ using System.Windows.Forms;
 
 namespace hcClient.ui
 {
-    abstract class WidgetBase : IDisposable
+    abstract class Widget //: IDisposable
     {
         #region " Properties "
 
@@ -15,25 +15,25 @@ namespace hcClient.ui
             set { _parent = value; }
         }
 
-        private bool _hovered = false;
-        public bool Hovered
-        {
-            get { return _hovered; }
-            set
-            {
-                if (_hovered != value)
-                {
-                    _hovered = value;
+        //private bool _hovered = false;
+        //public bool Hovered
+        //{
+        //    get { return _hovered; }
+        //    set
+        //    {
+        //        if (_hovered != value)
+        //        {
+        //            _hovered = value;
 
-                    if (_hovered)
-                        OnMouseEnter(EventArgs.Empty);
-                    else
-                        OnMouseLeave(EventArgs.Empty);
+        //            if (_hovered)
+        //                OnMouseEnter(EventArgs.Empty);
+        //            else
+        //                OnMouseLeave(EventArgs.Empty);
 
-                    Invalidate();
-                }
-            }
-        }
+        //            Invalidate();
+        //        }
+        //    }
+        //}
 
         private bool _visible = true;
         public bool Visible
@@ -174,29 +174,13 @@ namespace hcClient.ui
 
         #endregion
 
-        #region " Mouse Move, Enter & Leave "
+        #region " Mouse "
 
         public event EventHandler<MouseEventArgs> MouseMove;
         public virtual void OnMouseMove(MouseEventArgs e)
         {
             if (MouseMove != null) MouseMove(this, e);
         }
-
-        public event EventHandler MouseEnter;
-        public virtual void OnMouseEnter(EventArgs e)
-        {
-            if (MouseEnter != null) MouseEnter(this, e);
-        }
-
-        public event EventHandler MouseLeave;
-        public virtual void OnMouseLeave(EventArgs e)
-        {
-            if (MouseLeave != null) MouseLeave(this, e);
-        }
-
-        #endregion
-
-        #region " Mouse Down & Up"
 
         protected bool _isMouseDownL = false;
         protected bool _isMouseDownR = false;
@@ -233,10 +217,6 @@ namespace hcClient.ui
             }
         }
 
-        #endregion
-
-        #region " Mouse Click "
-
         public event EventHandler Click;
         public virtual void OnClick(EventArgs e)
         {
@@ -253,10 +233,10 @@ namespace hcClient.ui
 
         #endregion
 
-        #region " IDisposable "
+        //#region " IDisposable "
 
-        public virtual void Dispose() {}
+        //public virtual void Dispose() {}
 
-        #endregion
+        //#endregion
     }
 }

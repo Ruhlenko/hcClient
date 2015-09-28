@@ -4,7 +4,7 @@ using System.Windows.Forms;
 
 namespace hcClient.ui
 {
-    class ImageWidget : WidgetBase
+    class ImageWidget : Widget
     {
         #region " BasePoint "
 

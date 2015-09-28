@@ -6,7 +6,7 @@ using System.Windows.Forms;
 
 namespace hcClient.ui
 {
-    class ButtonWidget : WidgetBase
+    class ButtonWidget : Widget
     {
         #region " Constructor "
 
@@ -321,14 +321,14 @@ namespace hcClient.ui
 
         #endregion
 
-        #region " IDisposable "
+        //#region " IDisposable "
 
-        public override void Dispose()
-        {
-            _textFormat.Dispose();
-            base.Dispose();
-        }
+        //public override void Dispose()
+        //{
+        //    _textFormat.Dispose();
+        //    base.Dispose();
+        //}
 
-        #endregion
+        //#endregion
     }
 }

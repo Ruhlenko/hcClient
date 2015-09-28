@@ -13,18 +13,18 @@
         /// <param name="disposing">истинно, если управляемый ресурс должен быть удален; иначе ложно.</param>
         protected override void Dispose(bool disposing)
         {
-            if (disposing)
-            {
-                tcpClient.Dispose();
-            }
+            //if (disposing)
+            //{
+            //    tcpClient.Dispose();
+            //}
 
-            if (disposing && (_widgets != null))
-            {
-                foreach (var w in _widgets)
-                {
-                    w.Dispose();
-                }
-            }
+            //if (disposing && (_widgets != null))
+            //{
+            //    foreach (var w in _widgets)
+            //    {
+            //        w.Dispose();
+            //    }
+            //}
 
             if (disposing && (components != null))
             {

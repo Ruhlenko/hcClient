@@ -6,10 +6,10 @@ namespace hcClient.ui
 
     interface IWidgetContainer
     {
-        void AddWidget(WidgetBase widget);
-        void RemoveWidget(WidgetBase widget);
+        void AddWidget(Widget widget);
+        void RemoveWidget(Widget widget);
 
-        void PopupWidget(WidgetBase widget, WidgetPosition position);
+        void PopupWidget(Widget widget, WidgetPosition position);
         void ClosePopup();
 
         void Invalidate(Rectangle rect);

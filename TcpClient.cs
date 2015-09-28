@@ -8,7 +8,7 @@ namespace hcClient
 {
     public enum ConnectionStatus { Disconnected, Connecting, OK }
 
-    class TcpClient : IDisposable
+    class TcpClient //: IDisposable
     {
         #region " Constructor "
 
@@ -189,7 +189,7 @@ namespace hcClient
             catch (Exception exc)
             {
                 Disconnect();
-                System.Windows.Forms.MessageBox.Show("TCPOpen.Exception: " + exc);
+                System.Windows.Forms.MessageBox.Show("TcpOpen.Exception: " + exc);
             }
         }
 
@@ -204,7 +204,7 @@ namespace hcClient
             }
             finally
             {
-                _reconnectTimer.Start();
+                /*if (!this.disposed)*/ _reconnectTimer.Start();
                 _cache.Reset();
                 for (var i = 0; i < _cache.Count; i++)
                     OnDataReceived(i, _cache.Read(i));
@@ -232,7 +232,7 @@ namespace hcClient
             catch (Exception exc)
             {
                 Disconnect();
-                System.Windows.Forms.MessageBox.Show("TCPConnect.Exception: " + exc);
+                System.Windows.Forms.MessageBox.Show("TcpConnect.Exception: " + exc);
             }
         }
 
@@ -296,7 +296,9 @@ namespace hcClient
                           new AsyncCallback(ReceiveCallback), _socket);
                 }
                 else
+                {
                     Disconnect();
+                }
             }
             catch (Exception)
             {
@@ -352,16 +354,22 @@ namespace hcClient
 
         #endregion
 
-        #region " IDisposable "
+        //#region " IDisposable "
 
-        public void Dispose()
-        {
-            _socket.Close();
-            _reconnectTimer.Dispose();
-            _watchdogTimer.Dispose();
-        }
+        //private bool disposed = false;
 
-        #endregion
+        //public void Dispose()
+        //{
+        //    if (!this.disposed)
+        //    {
+        //        _socket.Close();
+        //        _reconnectTimer.Dispose();
+        //        _watchdogTimer.Dispose();
+        //        this.disposed = true;
+        //    }
+        //}
+
+        //#endregion
     }
 
 }

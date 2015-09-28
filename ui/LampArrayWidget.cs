@@ -6,7 +6,7 @@ using System.Windows.Forms;
 
 namespace hcClient.ui
 {
-    class LampArrayWidget : WidgetBase, IActiveWidget
+    class LampArrayWidget : Widget, IActiveWidget
     {
         #region " IActiveWidget "
 

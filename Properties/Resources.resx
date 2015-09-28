@@ -118,14 +118,47 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="auto_color_24" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\auto_color_24.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="climate_48" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\climate_48.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="cool_color_24" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\cool_color_24.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="cool_white_24" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\cool_white_24.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="door_24_0" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\door_24_0.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="door_24_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\door_24_1.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="dry_color_24" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\dry_color_24.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="dry_white_24" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\dry_white_24.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="fan_speed_24_0" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\fan_speed_24_0.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="fan_speed_24_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\fan_speed_24_1.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="fan_speed_24_2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\fan_speed_24_2.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="fan_speed_24_3" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\fan_speed_24_3.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="fan_speed_24_4" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\fan_speed_24_4.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="fan_white_24" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\fan_white_24.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="floor_0" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\floor_0.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -135,6 +168,21 @@
   </data>
   <data name="floor_2" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\floor_2.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="floor_48_0" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\floor_48_0.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="floor_48_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\floor_48_1.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="floor_48_2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\floor_48_2.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="heat_color_24" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\heat_color_24.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="heat_white_24" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\heat_white_24.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="home_48" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\home_48.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -207,6 +255,9 @@
   </data>
   <data name="movement_24_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\movement_24_1.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="power_white_24" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\power_white_24.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="security_48" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\security_48.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>

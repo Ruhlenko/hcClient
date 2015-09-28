@@ -4,19 +4,61 @@ using System.Windows.Forms;
 
 namespace hcClient.ui
 {
-    class LevelWidget : WidgetBase
+    class LevelWidget : Widget
     {
         #region " Properties "
 
-        private Color _foreColor = Color.White;
-        public Color ForeColor
+        private Color _barActiveColor = Style.Button;
+        public Color BarActiveColor
         {
-            get { return _foreColor; }
+            get { return _barActiveColor; }
             set
             {
-                if (_foreColor != value)
+                if (_barActiveColor != value)
                 {
-                    _foreColor = value;
+                    _barActiveColor = value;
+                    Invalidate();
+                }
+            }
+        }
+
+        private Color _barInactiveColor = Style.Disabled(Style.Button);
+        public Color BarInactiveColor
+        {
+            get { return _barInactiveColor; }
+            set
+            {
+                if (_barInactiveColor != value)
+                {
+                    _barInactiveColor = value;
+                    Invalidate();
+                }
+            }
+        }
+
+        private Color _backColor = Style.ButtonOff;
+        public Color BackColor
+        {
+            get { return _backColor; }
+            set
+            {
+                if (_backColor != value)
+                {
+                    _backColor = value;
+                    Invalidate();
+                }
+            }
+        }
+
+        private int _border = Style.LevelBorder;
+        public int Border
+        {
+            get { return _border; }
+            set
+            {
+                if (_border != value)
+                {
+                    _border = value;
                     Invalidate();
                 }
             }
@@ -143,10 +185,13 @@ namespace hcClient.ui
 
         public override void Paint(PaintEventArgs e)
         {
+            var rect = _widgetRectangle;
+            e.Graphics.FillRectangle(new SolidBrush(BackColor), rect);
+
+            rect.Inflate(-_border, -_border);
+            e.Graphics.FillRectangle(new SolidBrush(BarInactiveColor), rect);
+
             float position = ValueToPosition(Value, Minimum, Maximum);
-
-            Rectangle rect = _widgetRectangle;
-
             switch (_orientation)
             {
                 case Orientation.Horizontal:
@@ -158,8 +203,7 @@ namespace hcClient.ui
                     rect.Height = pos;
                     break;
             }
-
-            e.Graphics.FillRectangle(new SolidBrush(ForeColor), rect);
+            e.Graphics.FillRectangle(new SolidBrush(BarActiveColor), rect);
         }
 
         #endregion
