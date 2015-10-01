@@ -11,8 +11,7 @@ namespace hcClient.ui
         public static Size HeaderButtonsSize = new Size(60, 60);
         public static int HeaderPadding = 6;
 
-        //public static Size SideButtonSize = new Size(126, 40);
-        //public static Padding SidePadding = new Padding(6, 0, 6, 6);
+        public static Size SideButtonSize = new Size(126, 40);
 
         public static Size ControlButtonSize = new Size(60, 40);
         public static int ControlPadding = 6;

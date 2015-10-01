@@ -391,37 +391,40 @@ namespace hcClient
 
         void initFloors()
         {
-            Point buttonsStartLocation = new Point(
-                this.ClientSize.Width - Style.HeaderButtonsSize.Width - Style.HeaderPadding,
+            var buttonsStartLocation = new Point(
+                this.ClientSize.Width - Style.SideButtonSize.Width - Style.HeaderPadding,
                 Style.HeaderButtonsSize.Height + Style.HeaderPadding * 2);
 
             _btnFloor2 = new ButtonWidget
             {
+                Text = "Второй этаж",
+                Font = Style.NormalFont,
                 Location = buttonsStartLocation,
-                Size = Style.HeaderButtonsSize,
-                Image = Properties.Resources.floor_48_2,
+                Size = Style.SideButtonSize,
             };
             _btnFloor2.Click += _btnFloor2_Click;
             this.AddWidget(_btnFloor2);
 
             _btnFloor1 = new ButtonWidget
             {
+                Text = "Первый этаж",
+                Font = Style.NormalFont,
                 Location = new Point(
                     buttonsStartLocation.X,
                     this._widgets[this._widgets.Count - 1].Bottom + Style.HeaderPadding),
-                Size = Style.HeaderButtonsSize,
-                Image = Properties.Resources.floor_48_1,
+                Size = Style.SideButtonSize,
             };
             _btnFloor1.Click += _btnFloor1_Click;
             this.AddWidget(_btnFloor1);
 
             _btnFloor0 = new ButtonWidget
             {
+                Text = "Подвал",
+                Font = Style.NormalFont,
                 Location = new Point(
                     buttonsStartLocation.X,
                     this._widgets[this._widgets.Count - 1].Bottom + Style.HeaderPadding),
-                Size = Style.HeaderButtonsSize,
-                Image = Properties.Resources.floor_48_0,
+                Size = Style.SideButtonSize,
             };
             _btnFloor0.Click += _btnFloor0_Click;
             this.AddWidget(_btnFloor0);
