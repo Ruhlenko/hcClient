@@ -1620,6 +1620,18 @@ namespace hcClient
                 Visible = false
             };
 
+            _panelClimate0.AddWidget(new LampArrayWidget
+            {
+                ID = 130,
+                Location = new Point(235, 287),
+                Size = new Size(48, 48),
+                Images = new Image[] { 
+                    Properties.Resources.fan_white_24,
+                    Properties.Resources.fan_24_1
+                },
+                BasePoints = new Point[] { new Point(24, 24) },
+            });
+
             w = new AcWidget
             {
                 IdMode = 154,
@@ -1643,6 +1655,18 @@ namespace hcClient
                 Size = Style.MainPanelSize,
                 Visible = false
             };
+
+            _panelClimate1.AddWidget(new LampArrayWidget
+            {
+                ID = 76,
+                Location = new Point(416, 282),
+                Size = new Size(48, 48),
+                Images = new Image[] { 
+                    Properties.Resources.fan_white_24,
+                    Properties.Resources.fan_24_1
+                },
+                BasePoints = new Point[] { new Point(24, 24) },
+            });
 
             w = new AcWidget
             {
@@ -1854,6 +1878,26 @@ namespace hcClient
                 BasePoint = new Point(198, 373),
             });
 
+            _panelSecurity0.AddWidget(new ActiveImageWidget
+            {
+                ID = 162,
+                Images = new Image[] {
+                    Properties.Resources.water_24_0,
+                    Properties.Resources.water_24_1
+                },
+                BasePoint = new Point(262, 412),
+            });
+
+            _panelSecurity0.AddWidget(new ActiveImageWidget
+            {
+                ID = 163,
+                Images = new Image[] {
+                    Properties.Resources.water_24_0,
+                    Properties.Resources.water_24_1
+                },
+                BasePoint = new Point(182, 412),
+            });
+
             _panelSecurity0.Move(location.X, location.Y);
             this.AddWidget(_panelSecurity0);
         }
@@ -1924,7 +1968,7 @@ namespace hcClient
                     Properties.Resources.movement_24_0,
                     Properties.Resources.movement_24_1
                 },
-                BasePoint = new Point(453, 306)
+                BasePoint = new Point(435, 306)
             });
 
             _panelSecurity1.AddWidget(new ActiveImageWidget
@@ -1969,6 +2013,16 @@ namespace hcClient
 
             _panelSecurity1.AddWidget(new ActiveImageWidget
             {
+                ID = 36,
+                Images = new Image[] {
+                    Properties.Resources.movement_24_0,
+                    Properties.Resources.movement_24_1
+                },
+                BasePoint = new Point(102, 324),
+            });
+
+            _panelSecurity1.AddWidget(new ActiveImageWidget
+            {
                 ID = 37,
                 Images = new Image[] {
                     Properties.Resources.door_24_0,
@@ -1979,12 +2033,52 @@ namespace hcClient
 
             _panelSecurity1.AddWidget(new ActiveImageWidget
             {
+                ID = 38,
+                Images = new Image[] {
+                    Properties.Resources.movement_24_0,
+                    Properties.Resources.movement_24_1
+                },
+                BasePoint = new Point(551, 226),
+            });
+
+            _panelSecurity1.AddWidget(new ActiveImageWidget
+            {
                 ID = 39,
                 Images = new Image[] {
                     Properties.Resources.door_24_0,
                     Properties.Resources.door_24_1
                 },
                 BasePoint = new Point(503, 226),
+            });
+
+            _panelSecurity1.AddWidget(new ActiveImageWidget
+            {
+                ID = 159,
+                Images = new Image[] {
+                    Properties.Resources.water_24_0,
+                    Properties.Resources.water_24_1
+                },
+                BasePoint = new Point(471, 113),
+            });
+
+            _panelSecurity1.AddWidget(new ActiveImageWidget
+            {
+                ID = 160,
+                Images = new Image[] {
+                    Properties.Resources.water_24_0,
+                    Properties.Resources.water_24_1
+                },
+                BasePoint = new Point(393, 181),
+            });
+
+            _panelSecurity1.AddWidget(new ActiveImageWidget
+            {
+                ID = 161,
+                Images = new Image[] {
+                    Properties.Resources.water_24_0,
+                    Properties.Resources.water_24_1
+                },
+                BasePoint = new Point(471, 306),
             });
 
             _panelSecurity1.Move(location.X, location.Y);
@@ -2138,6 +2232,26 @@ namespace hcClient
                     Properties.Resources.door_24_1
                 },
                 BasePoint = new Point(360, 321),
+            });
+
+            _panelSecurity2.AddWidget(new ActiveImageWidget
+            {
+                ID = 157,
+                Images = new Image[] {
+                    Properties.Resources.water_24_0,
+                    Properties.Resources.water_24_1
+                },
+                BasePoint = new Point(447, 364),
+            });
+
+            _panelSecurity2.AddWidget(new ActiveImageWidget
+            {
+                ID = 158,
+                Images = new Image[] {
+                    Properties.Resources.water_24_0,
+                    Properties.Resources.water_24_1
+                },
+                BasePoint = new Point(447, 432),
             });
 
             _panelSecurity2.Move(location.X, location.Y);
