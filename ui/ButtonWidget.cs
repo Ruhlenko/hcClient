@@ -283,10 +283,10 @@ namespace hcClient.ui
 
         public override void Paint(PaintEventArgs e)
         {
-            if (_backColor != Color.Transparent)
-            {
-                Color fillColor = (_active ? _activeColor : _backColor);
+            Color fillColor = (_active ? _activeColor : _backColor);
 
+            if (fillColor != Color.Transparent)
+            {
                 if (_disabled)
                     fillColor = Style.Disabled(fillColor);
                 else if (_pressed)
