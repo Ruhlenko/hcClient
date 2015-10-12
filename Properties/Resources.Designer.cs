@@ -83,6 +83,16 @@ namespace hcClient.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap close_24 {
+            get {
+                object obj = ResourceManager.GetObject("close_24", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap cool_color_24 {
             get {
                 object obj = ResourceManager.GetObject("cool_color_24", resourceCulture);
@@ -296,36 +306,6 @@ namespace hcClient.Properties {
         internal static System.Drawing.Bitmap floor_2 {
             get {
                 object obj = ResourceManager.GetObject("floor_2", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap floor_48_0 {
-            get {
-                object obj = ResourceManager.GetObject("floor_48_0", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap floor_48_1 {
-            get {
-                object obj = ResourceManager.GetObject("floor_48_1", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap floor_48_2 {
-            get {
-                object obj = ResourceManager.GetObject("floor_48_2", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -593,6 +573,16 @@ namespace hcClient.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap open_24 {
+            get {
+                object obj = ResourceManager.GetObject("open_24", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap power_white_24 {
             get {
                 object obj = ResourceManager.GetObject("power_white_24", resourceCulture);
@@ -616,6 +606,16 @@ namespace hcClient.Properties {
         internal static System.Drawing.Bitmap settings_48 {
             get {
                 object obj = ResourceManager.GetObject("settings_48", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap stop_24 {
+            get {
+                object obj = ResourceManager.GetObject("stop_24", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

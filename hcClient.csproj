@@ -87,9 +87,11 @@
     </Compile>
     <Compile Include="TcpClient.cs" />
     <Compile Include="ui\AcPopup.cs" />
+    <Compile Include="ui\CurtainPopup.cs" />
     <Compile Include="ui\ActiveButtonWidget.cs" />
     <Compile Include="ui\ActiveImageWidget.cs" />
     <Compile Include="ui\AcWidget.cs" />
+    <Compile Include="ui\CurtainWidget.cs" />
     <Compile Include="ui\IActiveWidget.cs" />
     <Compile Include="ui\ButtonWidget.cs" />
     <Compile Include="ui\ImageWidget.cs" />
@@ -267,15 +269,6 @@
     <None Include="Resources\fan_speed_24_4.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\floor_48_0.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\floor_48_1.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\floor_48_2.png" />
-  </ItemGroup>
-  <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
       <Visible>False</Visible>
       <ProductName>Клиентский профиль .NET Framework 3.5 с пакетом обновления 1 %28SP1%29</ProductName>
@@ -313,6 +306,15 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\curtains_32_4.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\close_24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\open_24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\stop_24.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

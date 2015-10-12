@@ -780,6 +780,20 @@ namespace hcClient
                 Size = new Size(75, 154),
             });
 
+            _panelLight0.AddWidget(new CurtainWidget
+            {
+                ID = 134,
+                Location = new Point(164, 55),
+                Size = new Size(48, 48)
+            });
+
+            _panelLight0.AddWidget(new CurtainWidget
+            {
+                ID = 135,
+                Location = new Point(82, 157),
+                Size = new Size(48, 48)
+            });
+
             _panelLight0.Move(location.X, location.Y);
             this.AddWidget(_panelLight0);
         }
