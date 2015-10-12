@@ -30,7 +30,7 @@ namespace hcClient.ui
             _txtTempr = new TemperatureWidget
             {
                 Font = Style.PopupFont,
-                TextAlign = ContentAlignment.MiddleLeft,
+                TextAlign = Alignment.MiddleLeft,
                 ShowCelsiusSign = true,
                 //HideInvalid = true,
                 Location = new Point(Style.PopupBorder, Style.PopupBorder),

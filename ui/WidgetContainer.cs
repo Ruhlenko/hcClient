@@ -43,8 +43,7 @@ namespace hcClient.ui
         #region " Background Image "
 
         private Image _backImage = null;
-        private Rectangle _backImageRect = Rectangle.Empty;
-        public Image BackgroundImage
+        public Image Background
         {
             get { return _backImage; }
             set
@@ -55,9 +54,41 @@ namespace hcClient.ui
             }
         }
 
+        private Alignment _backAlign = Alignment.MiddleCenter;
+        public Alignment BackgroundAlign
+        {
+            get { return _backAlign; }
+            set
+            {
+                if (_backAlign != value)
+                {
+                    _backAlign = value;
+                    updateBackImageRect();
+                    Invalidate();
+                }
+            }
+        }
+
+        private Point _backLocation = Point.Empty;
+        public Point BackgroundLocation
+        {
+            get { return _backLocation; }
+            set
+            {
+                if (_backAlign == Alignment.Custom)
+                {
+                    _backLocation = value;
+                    updateBackImageRect();
+                    Invalidate();
+                }
+            }
+        }
+
         #endregion
 
         #region " Methods "
+
+        private Rectangle _backImageRect = Rectangle.Empty;
 
         private void updateBackImageRect()
         {
@@ -66,9 +97,55 @@ namespace hcClient.ui
                 _backImageRect = Rectangle.Empty;
                 return;
             }
+
+            if (_backAlign == Alignment.Custom)
+            {
+                _backImageRect.X = this.X + _backLocation.X;
+                _backImageRect.Y = this.Y + _backLocation.Y;
+                return;
+            }
+
             _backImageRect.Size = _backImage.Size;
-            _backImageRect.X = Left + (Width - _backImageRect.Width) / 2;
-            _backImageRect.Y = Top + (Height - _backImageRect.Height) / 2;
+
+            switch (_backAlign)
+            {
+            case Alignment.TopLeft:
+            case Alignment.MiddleLeft:
+            case Alignment.BottomLeft:
+                _backImageRect.X = this.X;
+                break;
+            case Alignment.TopCenter:
+            case Alignment.MiddleCenter:
+            case Alignment.BottomCenter:
+                _backImageRect.X = this.X + (this.Width - _backImageRect.Width) / 2;
+                break;
+            case Alignment.TopRight:
+            case Alignment.MiddleRight:
+            case Alignment.BottomRight:
+                _backImageRect.X = this.Right - _backImageRect.Width;
+                break;
+            }
+
+            switch (_backAlign)
+            {
+            case Alignment.TopLeft:
+            case Alignment.TopCenter:
+            case Alignment.TopRight:
+                _backImageRect.Y = this.Y;
+                break;
+            case Alignment.MiddleLeft:
+            case Alignment.MiddleCenter:
+            case Alignment.MiddleRight:
+                _backImageRect.Y = this.Y + (this.Height - _backImageRect.Height) / 2;
+                break;
+            case Alignment.BottomLeft:
+            case Alignment.BottomCenter:
+            case Alignment.BottomRight:
+                _backImageRect.Y = this.Bottom - _backImageRect.Height;
+                break;
+            }
+
+            return;
         }
 
         public void Invalidate(Rectangle rect)

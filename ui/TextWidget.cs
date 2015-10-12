@@ -52,14 +52,14 @@ namespace hcClient.ui
 
         #region " TextAlign "
 
-        private ContentAlignment _textAlign = ContentAlignment.MiddleCenter;
+        private Alignment _textAlign = Alignment.MiddleCenter;
         private StringFormat _textFormat;
-        public ContentAlignment TextAlign
+        public Alignment TextAlign
         {
             get { return _textAlign; }
             set
             {
-                if (Enum.IsDefined(typeof(ContentAlignment), value))
+                if (Enum.IsDefined(typeof(Alignment), value))
                 {
                     _textAlign = value;
                     updateTextFormat();
@@ -72,37 +72,37 @@ namespace hcClient.ui
             _textFormat = new StringFormat(StringFormat.GenericDefault);
             switch (_textAlign)
             {
-                case ContentAlignment.TopLeft:
-                case ContentAlignment.TopCenter:
-                case ContentAlignment.TopRight:
+                case Alignment.TopLeft:
+                case Alignment.TopCenter:
+                case Alignment.TopRight:
                     _textFormat.LineAlignment = StringAlignment.Near;
                     break;
-                case ContentAlignment.MiddleLeft:
-                case ContentAlignment.MiddleCenter:
-                case ContentAlignment.MiddleRight:
+                case Alignment.MiddleLeft:
+                case Alignment.MiddleCenter:
+                case Alignment.MiddleRight:
                     _textFormat.LineAlignment = StringAlignment.Center;
                     break;
-                case ContentAlignment.BottomLeft:
-                case ContentAlignment.BottomCenter:
-                case ContentAlignment.BottomRight:
+                case Alignment.BottomLeft:
+                case Alignment.BottomCenter:
+                case Alignment.BottomRight:
                     _textFormat.LineAlignment = StringAlignment.Far;
                     break;
             }
             switch (_textAlign)
             {
-                case ContentAlignment.TopLeft:
-                case ContentAlignment.MiddleLeft:
-                case ContentAlignment.BottomLeft:
+                case Alignment.TopLeft:
+                case Alignment.MiddleLeft:
+                case Alignment.BottomLeft:
                     _textFormat.Alignment = StringAlignment.Near;
                     break;
-                case ContentAlignment.TopCenter:
-                case ContentAlignment.MiddleCenter:
-                case ContentAlignment.BottomCenter:
+                case Alignment.TopCenter:
+                case Alignment.MiddleCenter:
+                case Alignment.BottomCenter:
                     _textFormat.Alignment = StringAlignment.Center;
                     break;
-                case ContentAlignment.TopRight:
-                case ContentAlignment.MiddleRight:
-                case ContentAlignment.BottomRight:
+                case Alignment.TopRight:
+                case Alignment.MiddleRight:
+                case Alignment.BottomRight:
                     _textFormat.Alignment = StringAlignment.Far;
                     break;
             }

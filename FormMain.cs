@@ -468,7 +468,8 @@ namespace hcClient
         {
             _panelLight0 = new WidgetContainer
             {
-                BackgroundImage = Properties.Resources.floor_0,
+                Background = Properties.Resources.floor_0,
+                BackgroundAlign = Alignment.TopLeft,
                 Size = Style.MainPanelSize,
                 Visible = false
             };
@@ -802,7 +803,8 @@ namespace hcClient
         {
             _panelLight1 = new WidgetContainer
             {
-                BackgroundImage = Properties.Resources.floor_1,
+                Background = Properties.Resources.floor_1,
+                BackgroundAlign = Alignment.TopLeft,
                 Size = Style.MainPanelSize,
                 Visible = false
             };
@@ -1136,31 +1138,41 @@ namespace hcClient
                 Size = new Size(36, 95),
             });
 
-            _panelLight1.AddWidget(new ActiveButtonWidget
+            _panelLight1.AddWidget(new LampArrayWidget
             {
                 ID = 131,
-                Text = "Реле 1",
-                Font = Style.NormalFont,
-                Location = new Point(Style.ControlPadding, 0),
-                Size = Style.ControlButtonSize,
+                Location = new Point(6, 6),
+                Size = new Size(48, 516),
+                Images = new Image[] { 
+                    Properties.Resources.lamp_16_0,
+                    Properties.Resources.lamp_16_1
+                },
+                BasePoints = new Point[] {
+                    new Point(24, 24),
+                    new Point(24, 102),
+                    new Point(24, 180),
+                    new Point(24, 258),
+                    new Point(24, 336),
+                    new Point(24, 414),
+                    new Point(24, 492),
+                },
             });
 
-            _panelLight1.AddWidget(new ActiveButtonWidget
+            _panelLight1.AddWidget(new LampArrayWidget
             {
                 ID = 132,
-                Text = "Реле 2",
-                Font = Style.NormalFont,
-                Location = new Point(Style.ControlPadding, Style.ControlButtonSize.Height + Style.ControlPadding),
-                Size = Style.ControlButtonSize,
-            });
-
-            _panelLight1.AddWidget(new ActiveButtonWidget
-            {
-                ID = 133,
-                Text = "Реле 3",
-                Font = Style.NormalFont,
-                Location = new Point(Style.ControlPadding, (Style.ControlButtonSize.Height + Style.ControlPadding) * 2),
-                Size = Style.ControlButtonSize,
+                Location = new Point(536, 0),
+                Size = new Size(126, 126),
+                Images = new Image[] { 
+                    Properties.Resources.lamp_16_0,
+                    Properties.Resources.lamp_16_1
+                },
+                BasePoints = new Point[] {
+                    new Point(24, 24),
+                    new Point(102, 24),
+                    new Point(24, 102),
+                    new Point(102, 102),
+                },
             });
 
             _panelLight1.Move(location.X, location.Y);
@@ -1171,7 +1183,8 @@ namespace hcClient
         {
             _panelLight2 = new WidgetContainer
             {
-                BackgroundImage = Properties.Resources.floor_2,
+                Background = Properties.Resources.floor_2,
+                BackgroundAlign = Alignment.TopLeft,
                 Size = Style.MainPanelSize,
                 Visible = false
             };
@@ -1626,7 +1639,8 @@ namespace hcClient
 
             _panelClimate0 = new WidgetContainer
             {
-                BackgroundImage = Properties.Resources.floor_0,
+                Background = Properties.Resources.floor_0,
+                BackgroundAlign = Alignment.TopLeft,
                 Size = Style.MainPanelSize,
                 Visible = false
             };
@@ -1662,7 +1676,8 @@ namespace hcClient
 
             _panelClimate1 = new WidgetContainer
             {
-                BackgroundImage = Properties.Resources.floor_1,
+                Background = Properties.Resources.floor_1,
+                BackgroundAlign = Alignment.TopLeft,
                 Size = Style.MainPanelSize,
                 Visible = false
             };
@@ -1707,7 +1722,8 @@ namespace hcClient
 
             _panelClimate2 = new WidgetContainer
             {
-                BackgroundImage = Properties.Resources.floor_2,
+                Background = Properties.Resources.floor_2,
+                BackgroundAlign = Alignment.TopLeft,
                 Size = Style.MainPanelSize,
                 Visible = true
             };
@@ -1764,7 +1780,8 @@ namespace hcClient
         {
             _panelSecurity0 = new WidgetContainer
             {
-                BackgroundImage = Properties.Resources.floor_0,
+                Background = Properties.Resources.floor_0,
+                BackgroundAlign = Alignment.TopLeft,
                 Size = Style.MainPanelSize,
                 Visible = false
             };
@@ -1917,7 +1934,8 @@ namespace hcClient
         {
             _panelSecurity1 = new WidgetContainer
             {
-                BackgroundImage = Properties.Resources.floor_1,
+                Background = Properties.Resources.floor_1,
+                BackgroundAlign = Alignment.TopLeft,
                 Size = Style.MainPanelSize,
                 Visible = false
             };
@@ -2100,7 +2118,8 @@ namespace hcClient
         {
             _panelSecurity2 = new WidgetContainer
             {
-                BackgroundImage = Properties.Resources.floor_2,
+                Background = Properties.Resources.floor_2,
+                BackgroundAlign = Alignment.TopLeft,
                 Size = Style.MainPanelSize,
                 Visible = true
             };

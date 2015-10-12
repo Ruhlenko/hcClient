@@ -35,7 +35,7 @@ namespace hcClient.ui
 
         public override void Paint(PaintEventArgs e)
         {
-            if (BackgroundImage == null)
+            if (Background == null)
                 createBackgroundImage();
 
             base.Paint(e);
@@ -87,7 +87,7 @@ namespace hcClient.ui
             //g.DrawImage(sw, 0, bmp.Height - sw.Height);
             //g.DrawImage(se, bmp.Width - se.Width, bmp.Height - se.Height);
 
-            BackgroundImage = bmp;
+            Background = bmp;
         }
 
     }

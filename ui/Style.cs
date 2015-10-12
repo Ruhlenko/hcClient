@@ -12,7 +12,7 @@ namespace hcClient.ui
         public static Size ControlButtonSize = new Size(60, 40);
         public static int ControlPadding = 6;
 
-        public static Size MainPanelSize = new Size(608, 528);
+        public static Size MainPanelSize = new Size(668, 528);
 
         public static int PopupBorder = 24;
 
