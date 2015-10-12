@@ -259,6 +259,10 @@ namespace hcClient.ui
         }
 
         private bool _pressed = false;
+        public bool Pressed
+        {
+            get { return _pressed; }
+        }
 
         public override void OnMouseDown(MouseEventArgs e)
         {
