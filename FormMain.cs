@@ -290,6 +290,8 @@ namespace hcClient
         ButtonWidget _btnSecurity;
         ButtonWidget _btnSettings;
 
+        ButtonWidget _btnSecurityWater;
+
         void initHeader()
         {
             int buttonStep = Style.HeaderButtonsSize.Width + Style.HeaderPadding;
@@ -339,6 +341,14 @@ namespace hcClient
             _btnLight.Click += _btnLight_Click;
             this.AddWidget(_btnLight);
 
+            _btnSecurityWater = new ButtonWidget
+            {
+                Location = new Point(Style.HeaderPadding, Style.HeaderPadding),
+                Size = Style.HeaderButtonsSize,
+            };
+            _btnSecurityWater.Click += _btnSecurityWater_Click;
+            this.AddWidget(_btnSecurityWater);
+
             updateHeader();
         }
 
@@ -364,6 +374,11 @@ namespace hcClient
         {
             _mode = Mode.Settings;
             updateHeader();
+        }
+
+        void _btnSecurityWater_Click(object sender, EventArgs e)
+        {
+            PopupWidget(new SecurityWaterPopup(), WidgetPosition.Center);
         }
 
         void updateHeader()

@@ -101,6 +101,7 @@
     <Compile Include="ui\LevelWidget.cs" />
     <Compile Include="ui\MultiStateImageWidget.cs" />
     <Compile Include="ui\Popup.cs" />
+    <Compile Include="ui\SecurityWaterPopup.cs" />
     <Compile Include="ui\Style.cs" />
     <Compile Include="ui\TemperatureWidget.cs" />
     <Compile Include="ui\TextWidget.cs" />
