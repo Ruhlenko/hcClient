@@ -11,6 +11,7 @@ namespace hcClient.ui
     {
         #region " Constructor "
 
+        MultiStateImageWidget _imgFaucet;
         MultiStateImageWidget _imgWater;
         TextWidget _txtState;
 
@@ -25,41 +26,50 @@ namespace hcClient.ui
         {
             this.Size = new Size(
                 Style.PopupBorder * 2 + Style.ControlButtonSize.Width * 4 + Style.ControlPadding * 3,
-                Style.PopupBorder * 2 + 64 + Style.ControlButtonSize.Height * 8 + Style.ControlPadding * 8);
+                Style.PopupBorder * 2 + 64 + Style.ControlButtonSize.Height * 7 + Style.ControlPadding * 8);
 
             Size buttonsSize = new Size(
                 Style.ControlButtonSize.Width * 4 + Style.ControlPadding * 3,
                 Style.ControlButtonSize.Height);
 
+            _imgFaucet = new MultiStateImageWidget
+            {
+                BasePoint = new Point(Style.PopupBorder + 32, Style.PopupBorder + 32),
+                Images = new Image[] {
+                    Properties.Resources.faucet_64_0,
+                    Properties.Resources.faucet_64_1,
+                    Properties.Resources.faucet_64_0,
+                    Properties.Resources.faucet_64_0
+                },
+            };
+            AddWidget(_imgFaucet);
+
             _imgWater = new MultiStateImageWidget
             {
-                Location = new Point(Style.PopupBorder, Style.PopupBorder),
-                Size = new Size(this.Size.Width - Style.PopupBorder * 2, 64),
-        //        Images = new Image[] {
-        //  Properties.Resources.Kran_Open_Color_64,
-        //  Properties.Resources.Kran_Close_Color_64,
-        //  Properties.Resources.Kran_Open_Color_64,
-        //  Properties.Resources.Kran_Open_Color_64
-        //},
+                BasePoint = new Point(Style.PopupBorder + 64 + Style.ControlPadding + 32, Style.PopupBorder + 32),
+                Images = new Image[] {
+                    null,
+                    Properties.Resources.water_48_1,
+                },
             };
             AddWidget(_imgWater);
 
             _txtState = new TextWidget
             {
-                Location = new Point(Style.PopupBorder, _imgWater.Bottom + Style.ControlPadding),
+                Location = new Point(Style.PopupBorder, Style.PopupBorder + 64 + Style.ControlPadding),
                 Size = new Size(
                     this.Size.Width - Style.PopupBorder * 2,
-                    Style.ControlButtonSize.Height * 3 + Style.ControlPadding * 2),
+                    Style.ControlButtonSize.Height * 2 + Style.ControlPadding),
                 Font = Style.NormalFont,
-                TextAlign = Alignment.MiddleLeft,
+                TextAlign = Alignment.TopLeft,
             };
             AddWidget(_txtState);
 
             _btnOpen = new ButtonWidget
             {
-                Location = new Point(Style.PopupBorder, _txtState.Bottom),
+                Location = new Point(Style.PopupBorder, _txtState.Bottom + Style.ControlPadding),
                 Size = buttonsSize,
-                Font = Style.PopupFont,
+                Font = Style.NormalFont,
                 Text = "Открыть воду"
             };
             _btnOpen.Click += btnOpen_Click;
@@ -69,7 +79,7 @@ namespace hcClient.ui
             {
                 Location = new Point(_btnOpen.X, _btnOpen.Bottom + Style.ControlPadding),
                 Size = buttonsSize,
-                Font = Style.PopupFont,
+                Font = Style.NormalFont,
                 Text = "Закрыть воду"
             };
             _btnClose.Click += btnClose_Click;
@@ -79,7 +89,7 @@ namespace hcClient.ui
             {
                 Location = new Point(_btnClose.X, _btnClose.Bottom + Style.ControlPadding * 2),
                 Size = buttonsSize,
-                Font = Style.PopupFont,
+                Font = Style.NormalFont,
                 Text = "Включить защиту"
             };
             _btnEnable.Click += btnEnable_Click;
@@ -89,7 +99,7 @@ namespace hcClient.ui
             {
                 Location = new Point(_btnEnable.X, _btnEnable.Bottom + Style.ControlPadding),
                 Size = buttonsSize,
-                Font = Style.PopupFont,
+                Font = Style.NormalFont,
                 Text = "Отключить защиту на 1 час"
             };
             _btnPause.Click += btnPause_Click;
@@ -99,7 +109,7 @@ namespace hcClient.ui
             {
                 Location = new Point(_btnPause.X, _btnPause.Bottom + Style.ControlPadding),
                 Size = buttonsSize,
-                Font = Style.PopupFont,
+                Font = Style.NormalFont,
                 Text = "Отключить защиту"
             };
             _btnDisable.Click += btnDisable_Click;
@@ -122,12 +132,13 @@ namespace hcClient.ui
         private int _dataControl = -1;
         public int DataControl
         {
-            get { return (int)_dataControl; }
+            get { return _dataControl; }
             set
             {
                 if (_dataControl != value)
                 {
                     _dataControl = value;
+                    _imgFaucet.State = _dataControl;
                     updateText();
                 }
             }
@@ -149,6 +160,7 @@ namespace hcClient.ui
                 if (_dataWater != value)
                 {
                     _dataWater = value;
+                    _imgWater.State = _dataWater;
                     updateText();
                 }
             }
@@ -229,7 +241,7 @@ namespace hcClient.ui
                     "Подача воды: открыто\n\nЗащита от протечек: отключена\n(включение через {0} мин.)",
                     _dataTimer / 60);
 
-                _btnOpen.Disabled = false;
+                _btnOpen.Disabled = true;
                 _btnClose.Disabled = false;
 
                 _btnEnable.Disabled = false;
@@ -240,7 +252,7 @@ namespace hcClient.ui
             case (int)SecurityWaterState.Disabled:
                 _txtState.Text = "Подача воды: открыто\n\nЗащита от протечек: отключена";
 
-                _btnOpen.Disabled = false;
+                _btnOpen.Disabled = true;
                 _btnClose.Disabled = false;
 
                 _btnEnable.Disabled = false;

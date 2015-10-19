@@ -283,6 +283,46 @@ namespace hcClient.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap faucet_48_0 {
+            get {
+                object obj = ResourceManager.GetObject("faucet_48_0", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap faucet_48_1 {
+            get {
+                object obj = ResourceManager.GetObject("faucet_48_1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap faucet_64_0 {
+            get {
+                object obj = ResourceManager.GetObject("faucet_64_0", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap faucet_64_1 {
+            get {
+                object obj = ResourceManager.GetObject("faucet_64_1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap floor_0 {
             get {
                 object obj = ResourceManager.GetObject("floor_0", resourceCulture);
@@ -636,6 +676,26 @@ namespace hcClient.Properties {
         internal static System.Drawing.Bitmap water_24_1 {
             get {
                 object obj = ResourceManager.GetObject("water_24_1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap water_48_1 {
+            get {
+                object obj = ResourceManager.GetObject("water_48_1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap water_64_1 {
+            get {
+                object obj = ResourceManager.GetObject("water_64_1", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

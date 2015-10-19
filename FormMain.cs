@@ -291,6 +291,8 @@ namespace hcClient
         ButtonWidget _btnSettings;
 
         ButtonWidget _btnSecurityWater;
+        ActiveImageWidget _iconSecurityWaterMode;
+        ActiveImageWidget _iconSecurityWater;
 
         void initHeader()
         {
@@ -344,10 +346,41 @@ namespace hcClient
             _btnSecurityWater = new ButtonWidget
             {
                 Location = new Point(Style.HeaderPadding, Style.HeaderPadding),
-                Size = Style.HeaderButtonsSize,
+                Size = new Size(
+                    Style.HeaderButtonsSize.Width * 2 + Style.HeaderPadding,
+                    Style.HeaderButtonsSize.Height),
+                BackColor = Color.Transparent,
             };
             _btnSecurityWater.Click += _btnSecurityWater_Click;
             this.AddWidget(_btnSecurityWater);
+
+            _iconSecurityWaterMode = new ActiveImageWidget
+            {
+                ID = 165,
+                BasePoint = new Point(
+                    Style.HeaderPadding + Style.HeaderButtonsSize.Width / 2,
+                    Style.HeaderPadding + Style.HeaderButtonsSize.Height / 2),
+                Images = new Image[] { 
+                    Properties.Resources.faucet_48_0,
+                    Properties.Resources.faucet_48_1,
+                    Properties.Resources.faucet_48_0,
+                    Properties.Resources.faucet_48_0,
+                },
+            };
+            this.AddWidget(_iconSecurityWaterMode);
+
+            _iconSecurityWater = new ActiveImageWidget
+            {
+                ID = 164,
+                BasePoint = new Point(
+                    Style.HeaderPadding * 2 + Style.HeaderButtonsSize.Width + Style.HeaderButtonsSize.Width / 2,
+                    Style.HeaderPadding + Style.HeaderButtonsSize.Height / 2),
+                Images = new Image[] { 
+                    null,
+                    Properties.Resources.water_48_1,
+                },
+            };
+            this.AddWidget(_iconSecurityWater);
 
             updateHeader();
         }
@@ -378,7 +411,14 @@ namespace hcClient
 
         void _btnSecurityWater_Click(object sender, EventArgs e)
         {
-            PopupWidget(new SecurityWaterPopup(), WidgetPosition.Center);
+            PopupWidget(new SecurityWaterPopup()
+            {
+                IdControl = _iconSecurityWaterMode.ID,
+                DataControl = _iconSecurityWaterMode.Data,
+                IdTimer = _iconSecurityWaterMode.ID + 1,
+                IdWater = _iconSecurityWater.ID,
+                DataWater = _iconSecurityWater.Data,
+            }, WidgetPosition.Center);
         }
 
         void updateHeader()
