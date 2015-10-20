@@ -193,8 +193,15 @@ namespace hcClient.ui
                 {
                     _active = value;
                     Invalidate();
+                    OnActiveChanged(EventArgs.Empty);
                 }
             }
+        }
+
+        public event EventHandler ActiveChanged;
+        protected virtual void OnActiveChanged(EventArgs e)
+        {
+            if (ActiveChanged != null) ActiveChanged(this, e);
         }
 
         #endregion
