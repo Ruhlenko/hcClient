@@ -26,7 +26,7 @@ namespace hcClient.ui
         {
             this.Size = new Size(
                 Style.PopupBorder * 2 + Style.ControlButtonSize.Width * 4 + Style.ControlPadding * 3,
-                Style.PopupBorder * 2 + 64 + Style.ControlButtonSize.Height * 7 + Style.ControlPadding * 8);
+                Style.PopupBorder * 2 + 64 + Style.ControlButtonSize.Height * 6 + Style.ControlPadding * 7);
 
             Size buttonsSize = new Size(
                 Style.ControlButtonSize.Width * 4 + Style.ControlPadding * 3,
@@ -110,7 +110,8 @@ namespace hcClient.ui
                 Location = new Point(_btnPause.X, _btnPause.Bottom + Style.ControlPadding),
                 Size = buttonsSize,
                 Font = Style.NormalFont,
-                Text = "Отключить защиту"
+                Text = "Отключить защиту",
+                Visible = false,
             };
             _btnDisable.Click += btnDisable_Click;
             AddWidget(_btnDisable);
