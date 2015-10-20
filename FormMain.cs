@@ -88,8 +88,10 @@ namespace hcClient
             initSecurity1(_mainPanelLocation);
             initSecurity2(_mainPanelLocation);
 
-            initHeader();
+            initSettings(_mainPanelLocation);
+
             initFloors();
+            initHeader();
 
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -307,7 +309,6 @@ namespace hcClient
                     Style.HeaderPadding),
                 Size = Style.HeaderButtonsSize,
                 Image = Properties.Resources.settings_48,
-                Disabled = true
             };
             _btnSettings.Click += _btnSettings_Click;
             this.AddWidget(_btnSettings);
@@ -502,28 +503,32 @@ namespace hcClient
         void _btnFloor0_Click(object sender, EventArgs e)
         {
             _floor = Floor.Floor0;
-            updateFloorButtons();
+            updateMainPanel();
         }
 
         void _btnFloor1_Click(object sender, EventArgs e)
         {
             _floor = Floor.Floor1;
-            updateFloorButtons();
+            updateMainPanel();
         }
 
         void _btnFloor2_Click(object sender, EventArgs e)
         {
             _floor = Floor.Floor2;
-            updateFloorButtons();
+            updateMainPanel();
         }
 
         void updateFloorButtons()
         {
+            bool floorButtonsVisible = (_mode == Mode.Light || _mode == Mode.Climate || _mode == Mode.Security);
+
+            _btnFloor0.Visible = floorButtonsVisible;
+            _btnFloor1.Visible = floorButtonsVisible;
+            _btnFloor2.Visible = floorButtonsVisible;
+
             _btnFloor0.Active = (_floor == Floor.Floor0);
             _btnFloor1.Active = (_floor == Floor.Floor1);
             _btnFloor2.Active = (_floor == Floor.Floor2);
-
-            updateMainPanel();
         }
 
         #endregion
@@ -2370,6 +2375,69 @@ namespace hcClient
 
         #endregion
 
+        #region " Settings "
+
+        WidgetContainer _panelSettings;
+
+        ActiveButtonWidget _btnPower;
+        TextWidget _txtPower;
+
+        void initSettings(Point location)
+        {
+            _panelSettings = new WidgetContainer
+            {
+                Size = Style.MainPanelSize,
+                Visible = false
+            };
+
+            _btnPower = new ActiveButtonWidget
+            {
+                ID = 129,
+                Location = new Point(Style.HeaderPadding, Style.HeaderPadding),
+                Size = new Size(
+                    Style.HeaderButtonsSize.Width * 3 + Style.HeaderPadding * 2,
+                    Style.HeaderButtonsSize.Height),
+            };
+            _btnPower.ActiveChanged += btnPower_ActiveChanged;
+            _panelSettings.AddWidget(_btnPower);
+
+            _panelSettings.AddWidget(new ImageWidget
+            {
+                BasePoint = new Point(
+                    _btnPower.X + Style.HeaderButtonsSize.Width / 2,
+                    _btnPower.Y + Style.HeaderButtonsSize.Height / 2),
+                Image = Properties.Resources.home_48,
+            });
+
+            _txtPower = new TextWidget
+            {
+                Location = new Point(
+                    _btnPower.X + Style.HeaderButtonsSize.Width,
+                    _btnPower.Y),
+                Size = new Size(
+                    Style.HeaderButtonsSize.Width * 2 + Style.HeaderPadding,
+                    Style.HeaderButtonsSize.Height),
+                TextAlign = Alignment.MiddleLeft,
+                Font = Style.NormalFont,
+            };
+            _panelSettings.AddWidget(_txtPower);
+
+            _panelSettings.Move(location.X, location.Y);
+            this.AddWidget(_panelSettings);
+        }
+
+        void btnPower_ActiveChanged(object sender, EventArgs e)
+        {
+            updatePowerText();
+        }
+
+        void updatePowerText()
+        {
+            _txtPower.Text = (_btnPower.Active ? "Розетки включены" : "Розетки отключены");
+        }
+
+        #endregion
+
         void updateMainPanel()
         {
             _panelLight0.Visible = (_mode == Mode.Light && _floor == Floor.Floor0);
@@ -2383,6 +2451,13 @@ namespace hcClient
             _panelSecurity0.Visible = (_mode == Mode.Security && _floor == Floor.Floor0);
             _panelSecurity1.Visible = (_mode == Mode.Security && _floor == Floor.Floor1);
             _panelSecurity2.Visible = (_mode == Mode.Security && _floor == Floor.Floor2);
+
+            _panelSettings.Visible = (_mode == Mode.Settings);
+
+            if (_panelSettings.Visible)
+                updatePowerText();
+
+            updateFloorButtons();
         }
     }
 }
