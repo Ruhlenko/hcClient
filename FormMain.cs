@@ -294,6 +294,8 @@ namespace hcClient
         ActiveImageWidget _iconSecurityWaterMode;
         ActiveImageWidget _iconSecurityWater;
 
+        ActiveImageWidget _iconSecurityArm;
+
         void initHeader()
         {
             int buttonStep = Style.HeaderButtonsSize.Width + Style.HeaderPadding;
@@ -381,6 +383,19 @@ namespace hcClient
                 },
             };
             this.AddWidget(_iconSecurityWater);
+
+            _iconSecurityArm = new ActiveImageWidget
+            {
+                ID = 167,
+                BasePoint = new Point(
+                    Style.HeaderPadding * 3 + Style.HeaderButtonsSize.Width * 2 + Style.HeaderButtonsSize.Width / 2,
+                    Style.HeaderPadding + Style.HeaderButtonsSize.Height / 2),
+                Images = new Image[] { 
+                    null,
+                    Properties.Resources.security_48,
+                },
+            };
+            this.AddWidget(_iconSecurityArm);
 
             updateHeader();
         }
