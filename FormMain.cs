@@ -2165,6 +2165,16 @@ namespace hcClient
                 BasePoint = new Point(471, 306),
             });
 
+            _panelSecurity1.AddWidget(new ActiveImageWidget
+            {
+                ID = 168,
+                BasePoint = new Point(289, 324),
+                Images = new Image[] {
+                    Properties.Resources.movement_24_0,
+                    Properties.Resources.movement_24_1
+                },
+            });
+
             _panelSecurity1.Move(location.X, location.Y);
             this.AddWidget(_panelSecurity1);
         }
