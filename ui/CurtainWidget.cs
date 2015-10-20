@@ -51,6 +51,7 @@ namespace hcClient.ui
                 {
                     _data = value;
                     updateImage();
+                    Invalidate();
                 }
             }
         }
